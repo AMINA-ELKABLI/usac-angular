@@ -1,0 +1,20 @@
+<table class="table">
+  <thead>
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Material Name</th>
+    <th scope="col">Description</th>
+    <th scope="col">Quantity</th>
+    <th scope="col">Condition</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let stock of stocks">
+    <th scope="row">{{stock.id }}</th>
+    <td>{{ stock.materialName }}</td>
+    <td>{{ stock.description}}</td>
+    <td>{{ stock.quantity }}</td>
+    <td>{{ stock.condition}}</td>
+  </tr>
+  </tbody>
+</table>
