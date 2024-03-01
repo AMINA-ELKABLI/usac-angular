@@ -1,66 +1,71 @@
 import { Injectable } from '@angular/core';
 
-import { getFirebaseBackend } from '../../authUtils';
+import {authUtils} from '../../authUtils';
 
 import { User } from '../models/auth.models';
+import {environment} from "../../../environments/environment";
+import {Observable, throwError} from "rxjs";
+import {map} from "rxjs/internal/operators";
+import {JwtAuthenticationResponse} from "../../account/auth/jtw-authentication-response.model";
+import {catchError} from "rxjs/operators";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({ providedIn: 'root' })
 
 export class AuthenticationService {
 
-    user: User;
 
-    constructor() {
-    }
+  private apiUrl: string = "http://localhost:8080/api/v1/auth/";
 
-    /**
-     * Returns the current user
-     */
-    public currentUser(): User {
-        return getFirebaseBackend().getAuthenticatedUser();
-    }
+  user: User;
 
-    /**
-     * Performs the auth
-     * @param email email of user
-     * @param password password of user
-     */
-    login(email: string, password: string) {
-        return getFirebaseBackend().loginUser(email, password).then((response: any) => {
-            const user = response;
-            return user;
-        });
-    }
+  constructor(private http: HttpClient) {
+  }
 
-    /**
-     * Performs the register
-     * @param email email
-     * @param password password
-     */
-    register(email: string, password: string) {
-        return getFirebaseBackend().registerUser(email, password).then((response: any) => {
-            const user = response;
-            return user;
-        });
-    }
+  register(firstname :string , lastname :string ,email :string , password :string): Observable<JwtAuthenticationResponse> {
+    return this.http.post<JwtAuthenticationResponse>(this.apiUrl + "register", {firstname, lastname ,email , password});
+  }
 
-    /**
-     * Reset password
-     * @param email email
-     */
-    resetPassword(email: string) {
-        return getFirebaseBackend().forgetPassword(email).then((response: any) => {
-            const message = response.data;
-            return message;
-        });
-    }
+  login(email: string, password: string): Observable<JwtAuthenticationResponse> {
+    return this.http.post<JwtAuthenticationResponse>(this.apiUrl + "authenticate", { email, password })
+      .pipe(
+        map((response: JwtAuthenticationResponse) => {
+          if (response && response.accessToken && response.refreshToken) {
+            authUtils.setLoggedCredentials(response);
+            return response;
+          } else {
+            throw new Error('Invalid response format');
+          }
+        }),
+        catchError((error: any) => {
+          console.error('Error during login:', error);
+          return throwError(error);
+        })
+      );
+  }
 
-    /**
-     * Logout the user
-     */
-    logout() {
-        // logout the user
-        getFirebaseBackend().logout();
-    }
+  resetPassword(email: string) {
+    return this.http.post(this.apiUrl + "forget-password", {email});
+  }
+
+  logout() {
+    // logout the user
+    authUtils.logout();
+  }
+  getRefreshToken(){
+    return authUtils.getRefrechToken();
+  }
+
+  refreshToken(refresh_token: string): Observable<JwtAuthenticationResponse> {
+    return this.http.post<JwtAuthenticationResponse>(this.apiUrl + "token/refresh", {}, {headers: {Authorization: `Bearer ${refresh_token}`}})
+      .pipe(
+        map((response: JwtAuthenticationResponse) => {
+          if (response) {
+            authUtils.setAccessToken(response.accessToken);
+          }
+          return response;
+        })
+      );
+  }
 }
 

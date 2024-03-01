@@ -8,6 +8,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
 import { environment } from '../../../../environments/environment';
+import Swal from "sweetalert2";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-login',
@@ -19,63 +21,76 @@ import { environment } from '../../../../environments/environment';
  * Login component
  */
 export class LoginComponent implements OnInit {
+  constructor(private formBuilder: FormBuilder,
+              private route: ActivatedRoute,
+              private router: Router,
+              private authenticationService: AuthenticationService) { }
 
   loginForm: FormGroup;
   submitted = false;
   error = '';
   returnUrl: string;
 
-  // set the currenr year
+
   year: number = new Date().getFullYear();
 
-  // tslint:disable-next-line: max-line-length
-  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService,
-    private authFackservice: AuthfakeauthenticationService) { }
-
-  ngOnInit() {
+  ngOnInit(): void {
+    document.body.classList.add('auth-body-bg');
     this.loginForm = this.formBuilder.group({
-      email: ['admin@themesbrand.com', [Validators.required, Validators.email]],
-      password: ['123456', [Validators.required]],
+      email: ['youssef@gmail.com', [Validators.required, Validators.email]],
+      password: ['password', [Validators.required]],
     });
 
-    // reset login status
-    // this.authenticationService.logout();
-    // get return url from route parameters or default to '/'
-    // tslint:disable-next-line: no-string-literal
+
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
-  // convenience getter for easy access to form fields
-  get f() { return this.loginForm.controls; }
 
-  /**
-   * Form submit
-   */
+
+  get dataForm() { return this.loginForm.controls; }
+
+
   onSubmit() {
     this.submitted = true;
 
-    // stop here if form is invalid
     if (this.loginForm.invalid) {
+      console.log('Invalid login form');
       return;
-    } else {
-      if (environment.defaultauth === 'firebase') {
-        this.authenticationService.login(this.f.email.value, this.f.password.value).then((res: any) => {
-          this.router.navigate(['/dashboard']);
-        })
-          .catch(error => {
-            this.error = error ? error : '';
-          });
-      } else {
-        this.authFackservice.login(this.f.email.value, this.f.password.value)
-          .pipe(first())
-          .subscribe(
-            data => {
-              this.router.navigate(['/dashboard']);
-            },
-            error => {
-              this.error = error ? error : '';
-            });
-      }
     }
+
+    this.authenticationService.login(this.dataForm.email.value, this.dataForm.password.value)
+      .subscribe({
+        next: () => {
+          console.log('DONE');
+          this.router.navigate(['/dashboard']);
+        },
+        error: (error) => {
+          console.log("error")
+          if (error instanceof HttpErrorResponse) {
+            if (error.status === 401) {
+              this.error = 'Invalid email or password. Please try again.';
+            }
+            if (error.status === 400) {
+              const errorMessage = 'The server is currently undergoing maintenance. Please try again later.';
+              console.log(errorMessage);
+              Swal.fire({
+                title: 'Error Your account is disabled ?',
+                text: 'Contact the administrator !',
+                icon: 'warning',
+                showCancelButton: false,
+                confirmButtonColor: '#34c38f',
+                cancelButtonColor: '#f46a6a',
+                confirmButtonText: 'Ok!'
+              })
+            }
+            else {
+              this.error = 'An unexpected error occurred. Please try again later.';
+            }
+          } else {
+            this.error = 'An unexpected error occurred. Please try again later.';
+          }
+        }
+      });
   }
+
 }

@@ -13,16 +13,17 @@ import { environment } from '../../../../environments/environment';
 })
 export class Recoverpwd2Component implements OnInit {
 
-   // set the currenr year
-   year: number = new Date().getFullYear();
 
-   resetForm: FormGroup;
-   submitted = false;
-   error = '';
-   success = '';
-   loading = false;
+  // set the currenr year
+  year: number = new Date().getFullYear();
 
-   constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService) { }
+  resetForm: FormGroup;
+  submitted = false;
+  error = '';
+  success = '';
+  loading = false;
+
+  constructor(private formBuilder: FormBuilder, private route: ActivatedRoute, private router: Router, private authenticationService: AuthenticationService) { }
 
   ngOnInit(): void {
     this.resetForm = this.formBuilder.group({
@@ -45,9 +46,14 @@ export class Recoverpwd2Component implements OnInit {
       return;
     }
     if (environment.defaultauth === 'firebase') {
-      this.authenticationService.resetPassword(this.f.email.value)
-        .catch(error => {
+      this.authenticationService.resetPassword(this.f.email.value).subscribe(
+        data => {
+          this.success = 'Reset password link sent to your email.';
+          this.error = '';
+        },
+        error => {
           this.error = error ? error : '';
+          this.success = '';
         });
     }
   }
