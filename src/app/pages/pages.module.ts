@@ -35,6 +35,7 @@ import { ListChildsComponent } from './Child/list-childs/list-childs.component';
 import { ListstockComponent } from './Stock/liststock/liststock.component';
 import { AddstockComponent } from './Stock/addstock/addstock.component';
 
+
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interactionPlugin,

@@ -9,10 +9,10 @@ import {Stock} from "../../../core/models/stock.models";
 export class StockService {
 
   constructor(private apiService: ApiService) {}
-
-  getAll(): Observable<Stock[]> {
-    return this.apiService.get<Stock[]>("/api/v1/stock");
+  getAll(page: number = 1, size: number = 10): Observable<Stock[]> {
+    return this.apiService.get(`/api/v1/stock?page=${page}&limit=${size}`);
   }
+
 
   getById(id: number): Observable<Stock> {
     return this.apiService.get<Stock>("/api/v1/stock/${id}");

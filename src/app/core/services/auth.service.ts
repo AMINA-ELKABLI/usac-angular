@@ -30,7 +30,7 @@ export class AuthenticationService {
     return this.http.post<JwtAuthenticationResponse>(this.apiUrl + "authenticate", { email, password })
       .pipe(
         map((response: JwtAuthenticationResponse) => {
-          if (response && response.accessToken && response.refreshToken) {
+          if (response && response.access_token && response.refresh_token) {
             authUtils.setLoggedCredentials(response);
             return response;
           } else {
@@ -61,7 +61,7 @@ export class AuthenticationService {
       .pipe(
         map((response: JwtAuthenticationResponse) => {
           if (response) {
-            authUtils.setAccessToken(response.accessToken);
+            authUtils.setAccessToken(response.access_token);
           }
           return response;
         })

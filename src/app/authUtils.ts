@@ -23,8 +23,8 @@ class AuthUtils {
     // if (user)
     //   sessionStorage.setItem('authUser', JSON.stringify(user));
     if (jwtAuthenticationResponse) {
-      this.setAccessToken(jwtAuthenticationResponse.accessToken);
-      this.setRefreshToken(jwtAuthenticationResponse.refreshToken);
+      this.setAccessToken(jwtAuthenticationResponse.access_token);
+      this.setRefreshToken(jwtAuthenticationResponse.refresh_token);
     }
   }
 

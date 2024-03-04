@@ -14,6 +14,7 @@ export class AddstockComponent implements OnInit {
 
   constructor(private fb: FormBuilder, private stockService: StockService) {}
 
+
   ngOnInit() {
     this.stockForm = this.fb.group({
       materialName: ['', Validators.required],
