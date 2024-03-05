@@ -41,7 +41,7 @@
   <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link  hover-underline-animation" href="#" style="color: #FF8C00; font-weight: bold;">Accueil</a>
+        <a class="nav-link  hover-underline-animation" href="#" style="color: #FF8C00; ">Accueil</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false" style="color: #1aa4a1;">
@@ -51,12 +51,17 @@
           <!-- Dropdown links -->
         </div>
       </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-expanded="false" style="color: #CD5C5C;">
+      <li ngbDropdown class="nav-item dropdown">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" role="button" aria-expanded="false">
           Univers Enfants
         </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
-          <!-- Dropdown links -->
+        <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
+          <button ngbDropdownItem class="dropdown-item" (click)="navigateToFoot()">Foot ball</button>
+          <button ngbDropdownItem class="dropdown-item">Natation</button>
+          <button ngbDropdownItem class="dropdown-item">Basket ball</button>
+          <button ngbDropdownItem class="dropdown-item">Fight club</button>
+          <button ngbDropdownItem class="dropdown-item">Gymnastique</button>
+          <button ngbDropdownItem class="dropdown-item">Danse</button>
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -75,10 +80,62 @@
 </nav>
 
 
+<ngb-carousel>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img src="/assets/images/usac/equip1.jpg" height="600" alt="Random first slide" />
+    </div>
+    <div class="carousel-caption">
+      <h3>First slide label</h3>
+      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    </div>
+  </ng-template>
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img src="/assets/images/usac/equip2.jpg" height="600" alt="Random first slide" />
+    </div>
+    <div class="carousel-caption">
+      <h3>First slide label</h3>
+      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    </div>
+  </ng-template>
+</ngb-carousel>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card">
+        <img class="card-img-top" src="/assets/images/usac/ns.jpg" alt="Description">
+        <div class="card-body">
+          <h5 class="card-title">Qui sommes-nous</h5>
+          <p class="card-text">USAC , Est une école de football et de basket-ball ainsi qu'un centre de divertissement et d'épanouissement (organisation des Kermesses) qui accueille des enfants âgés de 6 à 18 ans.</p>
+          <a href="#" class="btn btn-primary">EN SAVOIR PLUS</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img class="card-img-top" src="/assets/images/usac/jannat.jpg" alt="Description">
+        <div class="card-body">
+          <h5 class="card-title">Nos activités</h5>
+          <p class="card-text">USAC , Est une école de football et de basket-ball ainsi qu'un centre de divertissement et d'épanouissement (organisation des Kermesses) qui accueille des enfants âgés de 6 à 18 ans.</p>
+          <a href="#" class="btn btn-primary">VOIR NOS ACTIVITÉS</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <img class="card-img-top" src="/path/to/third-image.jpg" alt="Description">
+        <div class="card-body">
+          <h5 class="card-title">Devenir franchisé</h5>
+          <p class="card-text">Vous souhaitez développer votre propre club et avoir vos propres clients ? La franchise Le P’tit Club, c’est une activité pérenne, rentable et évolutive !</p>
+          <a href="#" class="btn btn-primary">+ D'INFOS SUR LA FRANCHISE</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
-
-
-  <footer class="bg-dark text-light pt-4 pb-2" style="background-color: #4db6ac;">
+  <footer class="text-light pt-4 pb-2" style="background-color: #4db6ac;">
 
   <div class="container">
       <div class="row">

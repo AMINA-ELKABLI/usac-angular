@@ -5,8 +5,13 @@ import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common
 
 import { environment } from '../environments/environment';
 
-import { NgbNavModule, NgbAccordionModule, NgbTooltipModule, NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { CarouselModule } from 'ngx-owl-carousel-o';
+import {
+  NgbNavModule,
+  NgbAccordionModule,
+  NgbTooltipModule,
+  NgbModule,
+  NgbCarouselModule
+} from '@ng-bootstrap/ng-bootstrap';
 import { ScrollToModule } from '@nicky-lenaers/ngx-scroll-to';
 
 import { SharedModule } from './cyptolanding/shared/shared.module';
@@ -24,6 +29,7 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { ErrorInterceptor } from './core/helpers/error.interceptor';
 import { JwtInterceptor } from './core/helpers/jwt.interceptor';
 import { FakeBackendInterceptor } from './core/helpers/fake-backend';
+import {Ng5SliderModule} from "ng5-slider";
 
 
 
@@ -51,13 +57,15 @@ export function createTranslateLoader(http: HttpClient): any {
     LayoutsModule,
     AppRoutingModule,
     ExtrapagesModule,
-    CarouselModule,
+    NgbCarouselModule,
     NgbAccordionModule,
     NgbNavModule,
     NgbTooltipModule,
     SharedModule,
     ScrollToModule.forRoot(),
-    NgbModule
+    NgbModule,
+    NgbCarouselModule,
+    Ng5SliderModule
   ],
   bootstrap: [AppComponent],
   providers: [

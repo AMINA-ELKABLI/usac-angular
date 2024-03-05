@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef, OnDestroy } from '@angular/core';
 import { interval, Observable } from 'rxjs';
 import { map } from 'rxjs/internal/operators';
 import { OwlOptions } from 'ngx-owl-carousel-o';
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cyptolanding',
@@ -13,6 +14,7 @@ import { OwlOptions } from 'ngx-owl-carousel-o';
  * Crypto landing page
  */
 export class CyptolandingComponent implements OnInit {
+  constructor(private router: Router) { }
 
   // set the currenr year
   year: number = new Date().getFullYear();
@@ -64,9 +66,7 @@ export class CyptolandingComponent implements OnInit {
   _minutes: number;
   _seconds: number;
 
-  constructor() {
-
-  }
+  c
 
   ngOnInit() {
     this._trialEndsAt = "2021-12-31";
@@ -120,9 +120,9 @@ export class CyptolandingComponent implements OnInit {
     document.getElementById('topnav-menu-content').classList.toggle('show');
   }
 
-  /**
-   * Section changed method
-   * @param sectionId specify the current sectionID
-   */
+  navigateToFoot() {
+    this.router.navigate(['/foot']);
+  }
+
 
 }

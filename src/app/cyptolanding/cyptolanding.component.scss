@@ -1,25 +1,30 @@
-
-.hover-underline-animation {
-  display: inline-block;
-  position: relative;
-  color: #000;
-  text-decoration: none;
+.navbar-nav .nav-link {
+  font-family: New Century Schoolbook, TeX Gyre Schola, serif;
+  font-size: 18px;
+}
+.card {
+  margin-top: 20px; /* Adjust as necessary */
 }
 
-.hover-underline-animation::after {
-  content: '';
-  position: absolute;
-  width: 100%;
-  transform: scaleX(0);
-  height: 2px;
-  bottom: 0;
-  left: 0;
-  background-color: #008000; /* ou toute autre couleur de votre choix */
-  transform-origin: bottom right;
-  transition: transform 0.25s ease-out;
+.card-body .btn-primary {
+  background-color: #FF8C00; /* Use the color you want for buttons */
+  border: none;
+  margin-top: 15px; /* Adjust as necessary */
 }
 
-.hover-underline-animation:hover::after {
-  transform: scaleX(1);
-  transform-origin: bottom left;
+.card-title {
+  color: #333; /* Your desired color for titles */
+}
+
+.card-text {
+  color: #666; /* Your desired color for text */
+}
+
+::ng-deep .navbar-nav .ngb-dropdown-menu {
+  background-color: #ffffff; /* Background color */
+}
+
+::ng-deep .dropdown-item:hover, .dropdown-item:focus {
+  background-color: #ffcc00; /* Background color on hover */
+  color: #000000; /* Text color on hover */
 }

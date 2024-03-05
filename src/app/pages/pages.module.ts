@@ -36,6 +36,12 @@ import { ListstockComponent } from './Stock/liststock/liststock.component';
 import { AddstockComponent } from './Stock/addstock/addstock.component';
 import { ListEquipComponent } from './Equip/list-equip/list-equip.component';
 import { AddEquipComponent } from './Equip/add-equip/add-equip.component';
+import { OffreEntrepriseComponent } from './usac/univers-adultes/offre-entreprise/offre-entreprise.component';
+import { ConventionDePartenariatComponent } from './usac/univers-adultes/convention-de-partenariat/convention-de-partenariat.component';
+import { FootComponent } from './usac/univers-enfant/foot/foot.component';
+import { BasketComponent } from './usac/univers-enfant/basket/basket.component';
+
+
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -45,7 +51,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 ]);
 
 @NgModule({
-  declarations: [CalendarComponent, ChatComponent,  ListChildsComponent, ListstockComponent, AddstockComponent, ListEquipComponent, AddEquipComponent],
+  declarations: [CalendarComponent, ChatComponent,  ListChildsComponent, ListstockComponent, AddstockComponent, ListEquipComponent, AddEquipComponent, OffreEntrepriseComponent, ConventionDePartenariatComponent, FootComponent, BasketComponent],
   imports: [
     CommonModule,
     FormsModule,
