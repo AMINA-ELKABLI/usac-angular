@@ -124,7 +124,5 @@ export class CyptolandingComponent implements OnInit {
    * Section changed method
    * @param sectionId specify the current sectionID
    */
-  onSectionChange(sectionId: string) {
-    this.currentSection = sectionId;
-  }
+
 }
