@@ -1,1 +1,18 @@
-<p>add-equip works!</p>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title mb-4">Equip Form</h4>
+        <form [formGroup]="equipForm" (ngSubmit)="saveEquip()">
+          <label> Name</label>
+          <input type="text" formControlName="name" class="form-control">
+          <label>Description</label>
+          <input type="text" formControlName="description" class="form-control">
+
+          <button type="submit" class="btn btn-success mt-5 mt-lg-0">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -43,7 +43,7 @@ export class ListEquipComponent implements OnInit {
 
 
   navigateToAddEquip() {
-    this.router.navigate(['/addStock'])
+    this.router.navigate(['/addEquip'])
   }
 
   handleGoToPage(page: number) {
