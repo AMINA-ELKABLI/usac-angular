@@ -1,54 +1,83 @@
-<nav class="navbar navbar-expand-lg navigation fixed-top sticky" (window:scroll)="windowScroll()" id="navbar">
-    <div class="container">
-        <a class="navbar-logo" routerLink="/">
-            <img src="assets/images/usac.jpeg" alt="" height="60" class="logo logo-dark">
-            <img src="assets/images/usac.jpeg" alt="" height="60" class="logo logo-light">
+<nav class="navbar navbar-expand-lg" style="background-color: #4db6ac;">
+  <div class="container-fluid">
+
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: white;">
+          <i class="fab fa-facebook-f"></i>
         </a>
-
-        <button type="button" class="btn btn-sm px-3 font-size-16 d-lg-none header-item"
-            data-toggle="collapse" data-target="#topnav-menu-content" (click)="toggleMenu()">
-            <i class="fa fa-fw fa-bars"></i>
-        </button>
-
-        <div class="collapse navbar-collapse" id="topnav-menu-content">
-            <ul class="navbar-nav ms-auto" id="topnav-menu">
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript: void(0);" [ngxScrollTo]="'home'"
-                        [ngClass]="{'active':currentSection === 'home'}">Home</a>
-                </li>
-                 <li class="nav-item">
-                    <a class="nav-link" href="javascript: void(0);" [ngxScrollTo]="'about'"
-                        [ngClass]="{'active':currentSection === 'about'}">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript: void(0);" [ngxScrollTo]="'features'"
-                        [ngxScrollToOffset]="5" [ngClass]="{'active':currentSection === 'features'}">Features</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript: void(0);" [ngxScrollTo]="'roadmap'"
-                        [ngxScrollToOffset]="5" [ngClass]="{'active':currentSection === 'roadmap'}">Roadmap</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript: void(0);" [ngxScrollTo]="'team'" [ngxScrollToOffset]="5"
-                        [ngClass]="{'active':currentSection === 'team'}">Team</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript: void(0);" [ngxScrollTo]="'news'" [ngxScrollToOffset]="5"
-                        [ngClass]="{'active':currentSection === 'news'}">News</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="javascript: void(0);" [ngxScrollTo]="'faqs'"
-                        [ngClass]="{'active':currentSection === 'faqs'}">FAQs</a>
-                </li>
-
-            </ul>
-
-            <div class="my-2 ms-lg-2">
-                <a href="javascript: void(0);" class="btn btn-outline-success w-xs">Sign in</a>
-            </div>
-        </div>
-    </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: white;">
+          <i class="fab fa-google-plus-g"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: white;">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: white;">
+          <i class="fas fa-phone"></i> 0522 911 205 / 0615 399 496
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="mailto:contact@campussport.ma" style="color: white;">
+          <i class="fas fa-envelope"></i> contact@campussport.ma
+        </a>
+      </li>
+    </ul>
+  </div>
 </nav>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
+  <div>
+    <img src="assets/images/users/logo-usac.webp" height="75" width="150" >
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link  hover-underline-animation" href="#" style="color: #FF8C00; font-weight: bold;">Accueil</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-expanded="false" style="color: #1aa4a1;">
+          Univers Adultes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <!-- Dropdown links -->
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink2" role="button" data-toggle="dropdown" aria-expanded="false" style="color: #CD5C5C;">
+          Univers Enfants
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink2">
+          <!-- Dropdown links -->
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3" role="button" data-toggle="dropdown" aria-expanded="false" style="color: #00008B;">
+          Loisirs
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+          <!-- Dropdown links -->
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: #9370DB;">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+
 
 <div appScrollspy [spiedTags]="['SECTION']" (sectionChange)="onSectionChange($event)">
     <!-- hero section start -->

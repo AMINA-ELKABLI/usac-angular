@@ -34,6 +34,8 @@ import { ChatComponent } from './chat/chat.component';
 import { ListChildsComponent } from './Child/list-childs/list-childs.component';
 import { ListstockComponent } from './Stock/liststock/liststock.component';
 import { AddstockComponent } from './Stock/addstock/addstock.component';
+import { ListEquipComponent } from './Equip/list-equip/list-equip.component';
+import { AddEquipComponent } from './Equip/add-equip/add-equip.component';
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
@@ -43,7 +45,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 ]);
 
 @NgModule({
-  declarations: [CalendarComponent, ChatComponent,  ListChildsComponent, ListstockComponent, AddstockComponent],
+  declarations: [CalendarComponent, ChatComponent,  ListChildsComponent, ListstockComponent, AddstockComponent, ListEquipComponent, AddEquipComponent],
   imports: [
     CommonModule,
     FormsModule,

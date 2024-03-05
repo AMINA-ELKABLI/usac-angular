@@ -53,4 +53,6 @@ export class ListstockComponent implements OnInit {
     this.currentPage=page;
     this.loadStock();
   }
+
+
 }

@@ -8,6 +8,7 @@ import {Stock} from "../../../core/models/stock.models";
 })
 export class StockService {
 
+  public keyword : string="";
   constructor(private apiService: ApiService) {}
   getAll(page: number = 1, size: number = 10): Observable<Stock[]> {
     return this.apiService.get(`/api/v1/stock?page=${page}&limit=${size}`);
@@ -29,4 +30,6 @@ export class StockService {
   delete(id: number): Observable<void> {
     return this.apiService.delete<void>("/api/v1/stock/${id}");
   }
+
+
 }
