@@ -11,7 +11,7 @@ export class EquipService {
 
   constructor(private apiService: ApiService) {}
   getAll(page: number = 1, size: number = 10): Observable<Equip[]> {
-    return this.apiService.get(`/api/v1/equip?page=${page}&limit=${size}`);
+    return this.apiService.get(`/api/v1/equip?page=${page}&limit=${size}` );
   }
 
 

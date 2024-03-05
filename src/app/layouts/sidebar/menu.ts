@@ -43,6 +43,12 @@ export const MENU: MenuItem[] = [
   },
   {
     id: 9,
+    label: 'Equip',
+    icon: 'bx-calendar',
+    link: '/listEquip',
+  },
+  {
+    id: 9,
     label: 'Stock',
     icon: 'bx-calendar',
     link: '/listStock',

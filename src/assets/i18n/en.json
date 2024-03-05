@@ -103,6 +103,9 @@
     "STOCK": {
       "TEXT": "Stock"
     },
+    "Equip": {
+      "TEXT": "Equip"
+    },
     "CHAT": {
       "TEXT": "Chat",
       "BADGE": "New"

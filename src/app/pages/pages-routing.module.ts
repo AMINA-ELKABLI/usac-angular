@@ -12,6 +12,7 @@ import {
   ConventionDePartenariatComponent
 } from "./usac/univers-adultes/convention-de-partenariat/convention-de-partenariat.component";
 import {FootComponent} from "./usac/univers-enfant/foot/foot.component";
+import {ListEquipComponent} from "./Equip/list-equip/list-equip.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' },
@@ -23,6 +24,7 @@ const routes: Routes = [
   { path: 'chat', component: ChatComponent },
   { path: 'convetion', component: ConventionDePartenariatComponent },
    {path:'foot', component:FootComponent},
+  {path:'listEquip' , component:ListEquipComponent},
   { path: 'dashboards', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule) },
   { path: 'crypto', loadChildren: () => import('./crypto/crypto.module').then(m => m.CryptoModule) },
   { path: 'email', loadChildren: () => import('./email/email.module').then(m => m.EmailModule) },
