@@ -16,20 +16,23 @@ export class StockService {
     return this.apiService.get(`/api/v1/stock`, {params: params});
   }
 
-  getById(id: number): Observable<Stock> {
-    return this.apiService.get<Stock>("/api/v1/stock/${id}");
-  }
+
 
   create(stock: Stock): Observable<Stock> {
     return this.apiService.post<Stock>("/api/v1/stock", stock);
   }
 
+
+  getById(id: number): Observable<Stock> {
+    return this.apiService.get<Stock>(`/api/v1/stock/${id}`);
+  }
+
   update(id: number, stock: Stock): Observable<Stock> {
-    return this.apiService.put<Stock>("/api/v1/stock/${id}", stock);
+    return this.apiService.put<Stock>(`/api/v1/stock/${id}`, stock);
   }
 
   delete(id: number): Observable<void> {
-    return this.apiService.delete<void>("/api/v1/stock/${id}");
+    return this.apiService.delete<void>(`/api/v1/stock/${id}`);
   }
 
 }

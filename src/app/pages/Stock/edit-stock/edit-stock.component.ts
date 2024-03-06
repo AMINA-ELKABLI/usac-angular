@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Stock} from "../../../core/models/stock.models";
 import {StockService} from "../service/stock.service";
 import {ActivatedRoute, Router} from "@angular/router";
+import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-edit-stock',
@@ -9,36 +10,40 @@ import {ActivatedRoute, Router} from "@angular/router";
   styleUrls: ['./edit-stock.component.scss']
 })
 export class EditStockComponent implements OnInit {
-  stock: Stock = { id: 0, materialName: '', description: '', quantity: 0, condition: '' };
-  constructor(private route: ActivatedRoute, private router: Router, private stockService: StockService) { }
+    stockId!: number;
+    stockFormGroup! : FormGroup;
+  constructor(private activatedroute: ActivatedRoute, private router: Router, private stockService: StockService , private fb :FormBuilder) { }
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
-      const id = params['id'];
-      if (id) {
-        this.loadStock(id);
+    this.stockId=+this.activatedroute.snapshot.params['id'];
+    this.stockService.getById(this.stockId).subscribe({
+        next:(stock)=>{
+          this.stockFormGroup=this.fb.group({
+            id            : this.fb.control(stock.id, [Validators.required, Validators.pattern(/^\d+$/)]),
+            materialName  : this.fb.control(stock.materialName, [Validators.required]),
+            description   : this.fb.control(stock.description, [Validators.required]),
+            quantity      : this.fb.control(stock.quantity, [Validators.min(1)]),
+            condition      : this.fb.control(stock.condition, [Validators.required]),
+          })
+
+        },
+      error : error => {
+          console.log(error)
       }
     });
   }
-  loadStock(id: number): void {
-    this.stockService.getById(id).subscribe(
-      (stock: Stock) => {
-        this.stock = stock;
+
+
+  updateStock() {
+    let stock : Stock = this.stockFormGroup.value;
+    this.stockService.update(stock.id, stock).subscribe({
+      next : data=>{
+        alert(JSON.stringify(data));
       },
-      (error) => {
-        console.error('Error loading stock:', error);
-      }
-    );
-  }
-  updateStock(): void {
-    this.stockService.update(this.stock.id, this.stock).subscribe(
-      () => {
-        console.log('Stock updated successfully');
-        this.router.navigate(['/listStock']);
-      },
-      (error) => {
+      error: error => {
         console.error('Error updating stock:', error);
       }
-    );
+    });
   }
+
 
 }
