@@ -20,17 +20,7 @@
   color: #666;
 }
 
-::ng-deep .navbar-nav .ngb-dropdown-menu {
-  background-color: #ffffff;
-}
 
-::ng-deep .dropdown-item:hover, .dropdown-item:focus {
-  background-color: #ffcc00;
-  color: #000000;
-}
-.nav-link:hover {
-  text-decoration: underline;
-}
 
 /* Specific colors for each link */
 .nav-link[href='#accueil']:hover {
@@ -54,6 +44,63 @@
 }
 
 .nav-link[href='#contact']:hover {
-  color: #32CD32; /* Choose your color for contact */
-  text-decoration-color: #32CD32; /* Underline Color */
+  color: #32CD32;
+  text-decoration-color: #32CD32;
+}
+
+.dropdown-item.active, .dropdown-item:hover {
+  background-color: #666;
+  color: #FFF;
+}
+
+
+.dropdown-item {
+  background-color: #FFF;
+  color: #000;
+}
+// img cartes
+
+.card-img-top {
+  height: 200px;
+  object-fit: cover;
+  width: 100%;
+}
+
+.card {
+
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body {
+  flex-grow: 1;
+}
+
+
+// service
+.service-section {
+  background-color: #f1f1f1;
+  color: #333;
+  padding: 50px;
+}
+.icon {
+  font-size: 24px;
+  padding: 20px 0;
+  display: inline-block;
+  width: 100%;
+}
+.title-container {
+  background-color: #FF8C00;
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.2);
+  margin-bottom: 30px;
+}
+
+.service-title {
+  color: #FFF;
+  margin: 0;
+  font-size: 2rem;
+  font-weight: bold;
 }
