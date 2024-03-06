@@ -20,12 +20,9 @@ import { DashboardsModule } from './dashboards/dashboards.module';
 
 import { CryptoModule } from './crypto/crypto.module';
 import { EmailModule } from './email/email.module';
-import { InvoicesModule } from './invoices/invoices.module';
-import { ContactsModule } from './contacts/contacts.module';
 import { UtilityModule } from './utility/utility.module';
 import { FormModule } from './form/form.module';
 import { IconsModule } from './icons/icons.module';
-import { ChartModule } from './chart/chart.module';
 import { CalendarComponent } from './calendar/calendar.component';
 import { MapsModule } from './maps/maps.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -40,6 +37,7 @@ import { OffreEntrepriseComponent } from './usac/univers-adultes/offre-entrepris
 import { ConventionDePartenariatComponent } from './usac/univers-adultes/convention-de-partenariat/convention-de-partenariat.component';
 import { FootComponent } from './usac/univers-enfant/foot/foot.component';
 import { BasketComponent } from './usac/univers-enfant/basket/basket.component';
+import { EditStockComponent } from './Stock/edit-stock/edit-stock.component';
 
 
 
@@ -51,7 +49,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 ]);
 
 @NgModule({
-  declarations: [CalendarComponent, ChatComponent,  ListChildsComponent, ListstockComponent, AddstockComponent, ListEquipComponent, AddEquipComponent, OffreEntrepriseComponent, ConventionDePartenariatComponent, FootComponent, BasketComponent],
+  declarations: [CalendarComponent, ChatComponent,  ListChildsComponent, ListstockComponent, AddstockComponent, ListEquipComponent, AddEquipComponent, OffreEntrepriseComponent, ConventionDePartenariatComponent, FootComponent, BasketComponent, EditStockComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -64,15 +62,11 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     CryptoModule,
 
     EmailModule,
-    InvoicesModule,
     HttpClientModule,
-
     UIModule,
-    ContactsModule,
     UtilityModule,
     FormModule,
     IconsModule,
-    ChartModule,
     WidgetModule,
     MapsModule,
     FullCalendarModule,

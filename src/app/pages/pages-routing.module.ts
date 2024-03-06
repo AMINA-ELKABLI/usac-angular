@@ -14,12 +14,14 @@ import {
 import {FootComponent} from "./usac/univers-enfant/foot/foot.component";
 import {ListEquipComponent} from "./Equip/list-equip/list-equip.component";
 import {AddEquipComponent} from "./Equip/add-equip/add-equip.component";
+import {EditStockComponent} from "./Stock/edit-stock/edit-stock.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' },
   {path: 'listChild', component: ListChildsComponent},
   {path: 'listStock', component: ListstockComponent},
-  {path: 'addStock', component: AddstockComponent},
+  {path: 'editStock', component: EditStockComponent},
+  {path: 'addStock/:id', component: AddstockComponent},
   { path: 'dashboard', component: DefaultComponent },
   { path: 'calendar', component: CalendarComponent },
   { path: 'chat', component: ChatComponent },
@@ -30,12 +32,10 @@ const routes: Routes = [
   { path: 'dashboards', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule) },
   { path: 'crypto', loadChildren: () => import('./crypto/crypto.module').then(m => m.CryptoModule) },
   { path: 'email', loadChildren: () => import('./email/email.module').then(m => m.EmailModule) },
-  { path: 'invoices', loadChildren: () => import('./invoices/invoices.module').then(m => m.InvoicesModule) },
-  { path: 'contacts', loadChildren: () => import('./contacts/contacts.module').then(m => m.ContactsModule) },
   { path: 'pages', loadChildren: () => import('./utility/utility.module').then(m => m.UtilityModule) },
   { path: 'form', loadChildren: () => import('./form/form.module').then(m => m.FormModule) },
   { path: 'icons', loadChildren: () => import('./icons/icons.module').then(m => m.IconsModule) },
-  { path: 'charts', loadChildren: () => import('./chart/chart.module').then(m => m.ChartModule) },
+
   { path: 'maps', loadChildren: () => import('./maps/maps.module').then(m => m.MapsModule) }
 ];
 

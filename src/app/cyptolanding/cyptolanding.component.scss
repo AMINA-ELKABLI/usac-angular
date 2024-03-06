@@ -3,28 +3,57 @@
   font-size: 18px;
 }
 .card {
-  margin-top: 20px; /* Adjust as necessary */
+  margin-top: 20px;
 }
 
 .card-body .btn-primary {
-  background-color: #FF8C00; /* Use the color you want for buttons */
+  background-color: #FF8C00;
   border: none;
-  margin-top: 15px; /* Adjust as necessary */
+  margin-top: 15px;
 }
 
 .card-title {
-  color: #333; /* Your desired color for titles */
+  color: #333;
 }
 
 .card-text {
-  color: #666; /* Your desired color for text */
+  color: #666;
 }
 
 ::ng-deep .navbar-nav .ngb-dropdown-menu {
-  background-color: #ffffff; /* Background color */
+  background-color: #ffffff;
 }
 
 ::ng-deep .dropdown-item:hover, .dropdown-item:focus {
-  background-color: #ffcc00; /* Background color on hover */
-  color: #000000; /* Text color on hover */
+  background-color: #ffcc00;
+  color: #000000;
+}
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+/* Specific colors for each link */
+.nav-link[href='#accueil']:hover {
+  color: #FF8C00;
+  text-decoration-color: #FF8C00; /* Underline Color */
+}
+
+.nav-link[href='#univers-adultes']:hover {
+  color: #1aa4a1;
+  text-decoration-color: #1aa4a1; /* Underline Color */
+}
+
+.nav-link[href='#univers-enfants']:hover {
+  color: #00008B;
+  text-decoration-color: #00008B; /* Underline Color */
+}
+
+.nav-link[href='#loisirs']:hover {
+  color: #9370DB;
+  text-decoration-color: #9370DB; /* Underline Color */
+}
+
+.nav-link[href='#contact']:hover {
+  color: #32CD32; /* Choose your color for contact */
+  text-decoration-color: #32CD32; /* Underline Color */
 }

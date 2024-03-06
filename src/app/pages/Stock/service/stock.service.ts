@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {ApiService} from "../../../service/api.service";
 import {Observable} from "rxjs";
 import {Stock} from "../../../core/models/stock.models";
+import {HttpParams} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,9 @@ export class StockService {
   public keyword : string="";
   constructor(private apiService: ApiService) {}
   getAll(page: number = 1, size: number = 10): Observable<Stock[]> {
-    return this.apiService.get(`/api/v1/stock?page=${page}&limit=${size}`);
+    let params = new HttpParams().set('page', page.toString()).set('limit', size.toString()).set('keyword', this.keyword);
+    return this.apiService.get(`/api/v1/stock`, {params: params});
   }
-
 
   getById(id: number): Observable<Stock> {
     return this.apiService.get<Stock>("/api/v1/stock/${id}");
@@ -30,6 +31,5 @@ export class StockService {
   delete(id: number): Observable<void> {
     return this.apiService.delete<void>("/api/v1/stock/${id}");
   }
-
 
 }

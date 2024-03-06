@@ -70,13 +70,13 @@ export const MENU: MenuItem[] = [
 
     {
         id: 21,
-        label: 'MENUITEMS.CRYPTO.TEXT',
-        icon: 'bx-bitcoin',
+        label: 'MENUITEMS.HOME.TEXT',
+        icon: 'bx bx-home',
         subItems: [
 
             {
                 id: 28,
-                label: 'MENUITEMS.CRYPTO.LIST.ICOLANDING',
+                label: 'Home',
                 link: '/crypto-ico-landing',
                 parentId: 21
             }
@@ -127,52 +127,6 @@ export const MENU: MenuItem[] = [
                         parentId:32
                     }
                 ]
-            }
-        ]
-    },
-    {
-        id: 36,
-        label: 'MENUITEMS.INVOICES.TEXT',
-        icon: 'bx-receipt',
-        subItems: [
-            {
-                id: 37,
-                label: 'MENUITEMS.INVOICES.LIST.INVOICELIST',
-                link: '/invoices/list',
-                parentId: 36
-            },
-            {
-                id: 38,
-                label: 'MENUITEMS.INVOICES.LIST.INVOICEDETAIL',
-                link: '/invoices/detail',
-                parentId: 36
-            },
-        ]
-    },
-
-
-    {
-        id: 48,
-        label: 'MENUITEMS.CONTACTS.TEXT',
-        icon: 'bxs-user-detail',
-        subItems: [
-            {
-                id: 49,
-                label: 'MENUITEMS.CONTACTS.LIST.USERGRID',
-                link: '/contacts/grid',
-                parentId: 48
-            },
-            {
-                id: 50,
-                label: 'MENUITEMS.CONTACTS.LIST.USERLIST',
-                link: '/contacts/list',
-                parentId: 48
-            },
-            {
-                id: 51,
-                label: 'MENUITEMS.CONTACTS.LIST.PROFILE',
-                link: '/contacts/profile',
-                parentId: 48
             }
         ]
     },
@@ -521,51 +475,6 @@ export const MENU: MenuItem[] = [
                 label: 'MENUITEMS.FORMS.LIST.MASK',
                 link: '/form/mask',
                 parentId: 100
-            }
-        ]
-    },
-    {
-        id: 110,
-        icon: 'bx-list-ul',
-        label: 'MENUITEMS.TABLES.TEXT',
-        subItems: [
-
-            {
-                id: 112,
-                label: 'MENUITEMS.TABLES.LIST.ADVANCED',
-                link: '/tables/advanced',
-                parentId: 110
-            }
-        ]
-    },
-    {
-        id: 113,
-        icon: 'bxs-bar-chart-alt-2',
-        label: 'MENUITEMS.CHARTS.TEXT',
-        subItems: [
-            {
-                id: 114,
-                label: 'MENUITEMS.CHARTS.LIST.APEX',
-                link: '/charts/apex',
-                parentId: 113
-            },
-            {
-                id: 115,
-                label: 'MENUITEMS.CHARTS.LIST.CHARTJS',
-                link: '/charts/chartjs',
-                parentId: 113
-            },
-            {
-                id: 116,
-                label: 'MENUITEMS.CHARTS.LIST.CHARTIST',
-                link: '/charts/chartist',
-                parentId: 113
-            },
-            {
-                id: 117,
-                label: 'MENUITEMS.CHARTS.LIST.ECHART',
-                link: '/charts/echart',
-                parentId: 113
             }
         ]
     },

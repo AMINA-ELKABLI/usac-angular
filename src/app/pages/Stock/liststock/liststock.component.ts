@@ -15,6 +15,7 @@ export class ListstockComponent implements OnInit {
   totalPages: number=0;
   pageSize:number=3;
   currentPage : number = 1;
+  selectedStockId!: number ;
   constructor(private stockService: StockService , private router: Router) {
   }
 
@@ -42,8 +43,14 @@ export class ListstockComponent implements OnInit {
         this.loadStock();
       });
   }
-
-
+  searchStock(keyword: string): void {
+    this.stockService.keyword = keyword;
+    this.loadStock();
+  }
+  editStock(id: number): void {
+    this.selectedStockId = id;
+    this.router.navigate(['/editStock', id]);
+  }
 
   navigateToAddStock() {
     this.router.navigate(['/addStock'])
