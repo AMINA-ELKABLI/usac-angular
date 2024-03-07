@@ -2,7 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-import { NgbNavModule, NgbDropdownModule, NgbModalModule, NgbTooltipModule , NgbCollapseModule} from '@ng-bootstrap/ng-bootstrap';
+import {
+    NgbNavModule,
+    NgbDropdownModule,
+    NgbModalModule,
+    NgbTooltipModule,
+    NgbCollapseModule,
+    NgbCarouselModule
+} from '@ng-bootstrap/ng-bootstrap';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { FullCalendarModule } from '@fullcalendar/angular';
 import { SimplebarAngularModule } from 'simplebar-angular';
@@ -38,6 +45,7 @@ import { ConventionDePartenariatComponent } from './usac/univers-adultes/convent
 import { FootComponent } from './usac/univers-enfant/foot/foot.component';
 import { BasketComponent } from './usac/univers-enfant/basket/basket.component';
 import { EditStockComponent } from './Stock/edit-stock/edit-stock.component';
+import { AddReservationComponent } from './reservation/add-reservation/add-reservation.component';
 
 
 
@@ -49,32 +57,33 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 ]);
 
 @NgModule({
-  declarations: [CalendarComponent, ChatComponent,  ListChildsComponent, ListstockComponent, AddstockComponent, ListEquipComponent, AddEquipComponent, OffreEntrepriseComponent, ConventionDePartenariatComponent, FootComponent, BasketComponent, EditStockComponent],
-  imports: [
-    CommonModule,
-    FormsModule,
-    NgbDropdownModule,
-    NgbModalModule,
-    PagesRoutingModule,
-    NgApexchartsModule,
-    ReactiveFormsModule,
-    DashboardsModule,
-    CryptoModule,
+  declarations: [CalendarComponent, ChatComponent,  ListChildsComponent, ListstockComponent, AddstockComponent, ListEquipComponent, AddEquipComponent, OffreEntrepriseComponent, ConventionDePartenariatComponent, FootComponent, BasketComponent, EditStockComponent, AddReservationComponent],
+    imports: [
+        CommonModule,
+        FormsModule,
+        NgbDropdownModule,
+        NgbModalModule,
+        PagesRoutingModule,
+        NgApexchartsModule,
+        ReactiveFormsModule,
+        DashboardsModule,
+        CryptoModule,
 
-    EmailModule,
-    HttpClientModule,
-    UIModule,
-    UtilityModule,
-    FormModule,
-    IconsModule,
-    WidgetModule,
-    MapsModule,
-    FullCalendarModule,
-    NgbNavModule,
-    NgbTooltipModule,
-    NgbCollapseModule,
-    SimplebarAngularModule,
-    LightboxModule
-  ],
+        EmailModule,
+        HttpClientModule,
+        UIModule,
+        UtilityModule,
+        FormModule,
+        IconsModule,
+        WidgetModule,
+        MapsModule,
+        FullCalendarModule,
+        NgbNavModule,
+        NgbTooltipModule,
+        NgbCollapseModule,
+        SimplebarAngularModule,
+        LightboxModule,
+        NgbCarouselModule
+    ],
 })
 export class PagesModule { }

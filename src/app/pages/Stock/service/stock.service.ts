@@ -3,6 +3,7 @@ import {ApiService} from "../../../service/api.service";
 import {Observable} from "rxjs";
 import {Stock} from "../../../core/models/stock.models";
 import {HttpParams} from "@angular/common/http";
+import {StockPaginationModel} from "../../../core/models/stock-pagination.model";
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,7 @@ export class StockService {
 
   public keyword : string="";
   constructor(private apiService: ApiService) {}
-  getAll(page: number = 1, size: number = 10): Observable<Stock[]> {
+  getAll(page: number = 1, size: number = 10): Observable<StockPaginationModel> {
     let params = new HttpParams().set('page', page.toString()).set('limit', size.toString()).set('keyword', this.keyword);
     return this.apiService.get(`/api/v1/stock`, {params: params});
   }

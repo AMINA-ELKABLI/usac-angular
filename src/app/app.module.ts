@@ -3,8 +3,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 
-import { environment } from '../environments/environment';
-
 import {
   NgbNavModule,
   NgbAccordionModule,
@@ -33,6 +31,7 @@ import {Ng5SliderModule} from "ng5-slider";
 
 
 
+
 export function createTranslateLoader(http: HttpClient): any {
   return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
 }
@@ -40,7 +39,7 @@ export function createTranslateLoader(http: HttpClient): any {
 @NgModule({
   declarations: [
     AppComponent,
-    CyptolandingComponent,
+    CyptolandingComponent
 
   ],
   imports: [

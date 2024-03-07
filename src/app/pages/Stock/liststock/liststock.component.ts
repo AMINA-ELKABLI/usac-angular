@@ -3,6 +3,7 @@ import {Stock} from "../../../core/models/stock.models";
 import {StockService} from "../service/stock.service";
 import {Router} from "@angular/router";
 import {HttpResponse} from "@angular/common/http";
+import {StockPaginationModel} from "../../../core/models/stock-pagination.model";
 
 @Component({
   selector: 'app-liststock',
@@ -11,7 +12,7 @@ import {HttpResponse} from "@angular/common/http";
 })
 export class ListstockComponent implements OnInit {
 
-  stocks: Stock[] = [];
+  stocks:Array<Stock>;
   totalPages: number=0;
   pageSize:number=3;
   currentPage : number = 1;
@@ -21,13 +22,12 @@ export class ListstockComponent implements OnInit {
 
   ngOnInit(): void {
     this.loadStock();
-
   }
   private loadStock(): void {
     this.stockService.getAll(this.currentPage, this.pageSize).subscribe(
-      (stocks: Stock[]) => {
-        this.stocks = stocks;
-        this.totalPages = Math.ceil(stocks.length / this.pageSize);
+      (stocks: StockPaginationModel) => {
+        this.stocks = stocks.content;
+        this.totalPages = Math.ceil(this.stocks.length / this.pageSize);
       },
       (err) => {
         console.log(err);

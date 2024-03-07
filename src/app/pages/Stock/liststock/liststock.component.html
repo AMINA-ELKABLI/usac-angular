@@ -1,3 +1,5 @@
+
+
 <div class="p-3">
   <div class="card">
     <div class="card-body">
@@ -28,7 +30,7 @@
           <td>{{ stock.materialName }}</td>
           <td>{{ stock.description }}</td>
           <td>{{ stock.quantity }}</td>
-          <td>{{ stock.condition }}</td>
+          <td>{{ stock.condition | json}}</td>
           <td>
             <button (click)="deleteStock(stock.id)" class="btn btn-outline-danger">
               <i class="bx bx-trash-alt"></i>

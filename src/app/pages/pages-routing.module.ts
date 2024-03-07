@@ -11,10 +11,10 @@ import {AddstockComponent} from "./Stock/addstock/addstock.component";
 import {
   ConventionDePartenariatComponent
 } from "./usac/univers-adultes/convention-de-partenariat/convention-de-partenariat.component";
-import {FootComponent} from "./usac/univers-enfant/foot/foot.component";
 import {ListEquipComponent} from "./Equip/list-equip/list-equip.component";
 import {AddEquipComponent} from "./Equip/add-equip/add-equip.component";
 import {EditStockComponent} from "./Stock/edit-stock/edit-stock.component";
+import {AddReservationComponent} from "./reservation/add-reservation/add-reservation.component";
 
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' },
@@ -26,7 +26,6 @@ const routes: Routes = [
   { path: 'calendar', component: CalendarComponent },
   { path: 'chat', component: ChatComponent },
   { path: 'convetion', component: ConventionDePartenariatComponent },
-   {path:'foot', component:FootComponent},
   {path:'listEquip' , component:ListEquipComponent},
   {path:'addEquip' , component:AddEquipComponent},
   { path: 'dashboards', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule) },

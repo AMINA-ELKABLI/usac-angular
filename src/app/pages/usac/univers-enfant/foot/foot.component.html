@@ -1,12 +1,94 @@
+
+
+
+
+<nav class="navbar navbar-expand-lg" style="background-color: #4db6ac;">
+  <div class="container-fluid">
+
+    <ul class="navbar-nav ms-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: white;">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: white;">
+          <i class="fab fa-google-plus-g"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: white;">
+          <i class="fab fa-instagram"></i>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: white;">
+          <i class="fas fa-phone"></i> 06 25 90 62 72 / 06 57 99 29 13
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="usackenitra@gmail.com" style="color: white;">
+          <i class="fas fa-envelope"></i> usackenitra@gmail.com
+        </a>
+      </li>
+    </ul>
+  </div>
+</nav>
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #ffffff;">
+  <div>
+    <img src="assets/images/users/logo-usac.webp" height="75" width="150" >
+  </div>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse d-flex justify-content-around " id="navbarNavDropdown">
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link  hover-underline-animation" href="#" style="color: #FF8C00; ">Accueil</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-expanded="false" style="color: #1aa4a1;">
+          Univers Adultes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <!-- Dropdown links -->
+        </div>
+      </li>
+      <li ngbDropdown class="nav-item dropdown">
+        <a ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"  aria-expanded="false">
+          Univers Enfants
+        </a>
+        <div ngbDropdownMenu aria-labelledby="navbarDropdownMenuLink" class="dropdown-menu">
+          <button ngbDropdownItem class="dropdown-item" >Foot ball</button>
+          <button ngbDropdownItem class="dropdown-item">Basket ball</button>
+
+        </div>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink3"  data-toggle="dropdown" aria-expanded="false" style="color: #00008B;">
+          Loisirs
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink3">
+          <!-- Dropdown links -->
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#" style="color: #9370DB;">Contact</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
 <div class="container mt-5">
   <div class="row">
     <!-- Colonne pour l'image -->
-    <div class="col-md-6">
+    <div class="col-md-6 fade-in">
       <img src="assets/images/usac/jannat.jpg" alt="Enfant jouant au football" class="img-fluid">
     </div>
 
     <!-- Colonne pour le texte -->
-    <div class="col-md-6">
+    <div class="col-md-6 fade-in">
       <h1 class="display-4">Académie de Football</h1>
       <p>Notre école, Football Club Casablanca "FCC" a pour vocation d'initier les enfants à la pratique de cette discipline...</p>
       <p>Outre la pratique de ce sport, nos éducateurs ont également pour missions de transmettre les valeurs...</p>
@@ -14,3 +96,64 @@
     </div>
   </div>
 </div>
+
+
+
+
+
+
+<footer class="text-light pt-4 pb-2" style="background-color: #4db6ac;">
+  <div class="container">
+    <div class="row">
+      <!-- Contact Info -->
+      <div class="col-md-4 mb-3">
+        <a href="#" class="navbar-brand">
+          <!-- Include your logo image here -->
+          <img src="assets/images/users/logo-usac.webp" height="75" width="150" >
+        </a>
+        <p>CSP Moulay ELHASSAN<br>
+          14000 Ville Kénitra<br>
+          Infoline: 06 25 90 62 72 / 06 57 99 29 13<br>
+          by - Braincorporate.com ©2017</p>
+      </div>
+
+      <!-- Column for Univers Enfants Links -->
+      <div class="col-md-3 mb-3">
+        <h5>Univers Enfants</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-light">Nos Académies</a></li>
+          <li><a href="#" class="text-light">Stages Vacances</a></li>
+          <li><a href="#" class="text-light">Urban Parc</a></li>
+          <li><a href="#" class="text-light">Anniversaires</a></li>
+        </ul>
+      </div>
+
+      <!-- Column for Univers Adultes Links -->
+      <div class="col-md-3 mb-3">
+        <h5>Univers Adultes</h5>
+        <ul class="list-unstyled">
+          <li><a href="#" class="text-light">Fitness & Natation</a></li>
+          <li><a href="#" class="text-light">Location de terrains</a></li>
+          <li><a href="#" class="text-light">Offre entreprise</a></li>
+          <li><a href="#" class="text-light">Convention de partenariat</a></li>
+        </ul>
+      </div>
+
+      <!-- Newsletter Signup -->
+      <div class="col-md-2 mb-3">
+        <h5>Newsletter</h5>
+        <p>Inscrivez-vous à notre newsletter. Si vous voulez vous tenir informé(e) de l'actualité et événements</p>
+        <form>
+          <div class="form-group">
+            <input type="email" class="form-control" placeholder="E-mail">
+          </div>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Footer end -->
+
+

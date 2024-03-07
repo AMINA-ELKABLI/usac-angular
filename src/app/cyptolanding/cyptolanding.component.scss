@@ -104,3 +104,43 @@
   font-size: 2rem;
   font-weight: bold;
 }
+ // adultes
+.card {
+  margin-top: 20px;
+  overflow: hidden; /* Assure que tout débordement d'image est coupé */
+  border-radius: 15px; /* Fournit des coins arrondis à la carte */
+  transition: transform 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+.card-img-overlay {
+  background: rgba(0, 0, 0, 0.2); /* Semi-transparent overlay */
+  border-radius: 15px; /* Ensure overlay has rounded corners like the card */
+  bottom: 0; /* Align the overlay to the bottom of the card */
+  transition: background 0.3s ease-in-out; /* Smooth transition for hover effect */
+}
+
+.card-img-overlay:hover {
+  background: rgba(0, 0, 0, 0.5); /* Darken the overlay on hover */
+}
+
+.card-title {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+}
+
+.card:hover {
+  transform: scale(1.05); /* Slightly enlarge the card on hover */
+}
+
+/* Ensure the images cover the card area and are not stretched */
+.card-img {
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Style for the section title */
+h2 {
+  color: #ffffff; /* Adjust the color to match your design */
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5); /* Optional text shadow for better readability */
+}
