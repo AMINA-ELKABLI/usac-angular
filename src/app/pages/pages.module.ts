@@ -46,6 +46,7 @@ import { FootComponent } from './usac/univers-enfant/foot/foot.component';
 import { BasketComponent } from './usac/univers-enfant/basket/basket.component';
 import { EditStockComponent } from './Stock/edit-stock/edit-stock.component';
 import { AddReservationComponent } from './reservation/add-reservation/add-reservation.component';
+import { AddChildComponent } from './Child/add-child/add-child.component';
 
 
 
@@ -57,7 +58,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 ]);
 
 @NgModule({
-  declarations: [CalendarComponent, ChatComponent,  ListChildsComponent, ListstockComponent, AddstockComponent, ListEquipComponent, AddEquipComponent, OffreEntrepriseComponent, ConventionDePartenariatComponent, FootComponent, BasketComponent, EditStockComponent, AddReservationComponent],
+  declarations: [CalendarComponent, ChatComponent,  ListChildsComponent, ListstockComponent, AddstockComponent, ListEquipComponent, AddEquipComponent, OffreEntrepriseComponent, ConventionDePartenariatComponent, FootComponent, BasketComponent, EditStockComponent, AddReservationComponent, AddChildComponent],
     imports: [
         CommonModule,
         FormsModule,
