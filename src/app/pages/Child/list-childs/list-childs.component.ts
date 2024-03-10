@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {Child} from "../../../core/models/child.models";
+import {ChildService} from "../service/child.service";
 
 @Component({
   selector: 'app-list-childs',
@@ -6,10 +8,29 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./list-childs.component.scss']
 })
 export class ListChildsComponent implements OnInit {
-
-  constructor() { }
+  childs: Child[] = [];
+  currentPage: number = 0;
+  pageSize: number = 10;
+  totalItems: number = 0;
+  constructor(private childService: ChildService) { }
 
   ngOnInit(): void {
+    this.getAllChilds();
   }
 
+  getAllChilds(): void {
+    this.childService.getAll(this.currentPage, this.pageSize).subscribe(response => {
+      this.childs = response.content;
+      this.totalItems = response.totalElements;
+    });
+  }
+
+  onPageChange(page: number): void {
+    this.currentPage = page;
+    this.getAllChilds();
+  }
+
+  deleteChild(id: number) {
+
+  }
 }

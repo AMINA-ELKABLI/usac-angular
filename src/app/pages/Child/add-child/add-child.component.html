@@ -88,7 +88,7 @@
 
           <h4 class="card-title">Données personnelles</h4>
           <p class="card-title-desc">Veuillez saisir les informations suivantes :</p>
-
+          <form [formGroup]=" childForm" (ngSubmit)="saveChild()">
           <div class="mb-3 row">
             <label for="name" class="col-md-2 col-form-label">Nom</label>
             <div class="col-md-10">
@@ -105,9 +105,8 @@
             <label for="gender" class="col-md-2 col-form-label">Genre</label>
             <div class="col-md-10">
               <select class="form-select" id="gender">
-                <option>Homme</option>
-                <option>Femme</option>
-                <option>Autre</option>
+                <option>Garcon</option>
+                <option>Fille</option>
               </select>
             </div>
           </div>
@@ -130,8 +129,9 @@
             </div>
           </div>
 
-          <!-- Ajoutez les champs pour les associations avec Equip, Play, et MatchChild ici -->
+            <button type="submit" class="btn btn-success mt-5 mt-lg-0">Save</button>
 
+          </form>
         </div>
       </div>
     </div>

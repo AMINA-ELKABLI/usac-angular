@@ -30,5 +30,10 @@ export class EquipService {
   delete(id: number): Observable<void> {
     return this.apiService.delete<void>("/api/v1/equip/${id}");
   }
+  // Dans EquipService
+  public getTotalTeams(): Observable<number> {
+    return this.apiService.getTotal();
+  }
+
 
 }

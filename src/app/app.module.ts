@@ -65,6 +65,7 @@ export function createTranslateLoader(http: HttpClient): any {
     NgbModule,
     NgbCarouselModule,
     Ng5SliderModule
+
   ],
   bootstrap: [AppComponent],
   providers: [

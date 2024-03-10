@@ -25,4 +25,7 @@ export class ApiService {
   delete<T>(endpoint: string): Observable<T> {
     return this.http.delete<T>(`${this.baseUrl}${endpoint}`);
   }
+  getTotal(): Observable<number> {
+    return this.http.get<number>(`${this.baseUrl}/api/v1/equip/total`);
+  }
 }

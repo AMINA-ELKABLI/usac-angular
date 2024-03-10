@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import {
-    NgbNavModule,
-    NgbDropdownModule,
-    NgbModalModule,
-    NgbTooltipModule,
-    NgbCollapseModule,
-    NgbCarouselModule
+  NgbNavModule,
+  NgbDropdownModule,
+  NgbModalModule,
+  NgbTooltipModule,
+  NgbCollapseModule,
+  NgbCarouselModule, NgbModule
 } from '@ng-bootstrap/ng-bootstrap';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { FullCalendarModule } from '@fullcalendar/angular';
@@ -26,15 +26,7 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { DashboardsModule } from './dashboards/dashboards.module';
 
 import { CryptoModule } from './crypto/crypto.module';
-import { EmailModule } from './email/email.module';
-import { UtilityModule } from './utility/utility.module';
-import { FormModule } from './form/form.module';
-import { IconsModule } from './icons/icons.module';
-import { CalendarComponent } from './calendar/calendar.component';
-import { MapsModule } from './maps/maps.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ChatComponent } from './chat/chat.component';
-
 import { ListChildsComponent } from './Child/list-childs/list-childs.component';
 import { ListstockComponent } from './Stock/liststock/liststock.component';
 import { AddstockComponent } from './Stock/addstock/addstock.component';
@@ -58,7 +50,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 ]);
 
 @NgModule({
-  declarations: [CalendarComponent, ChatComponent,  ListChildsComponent, ListstockComponent, AddstockComponent, ListEquipComponent, AddEquipComponent, OffreEntrepriseComponent, ConventionDePartenariatComponent, FootComponent, BasketComponent, EditStockComponent, AddReservationComponent, AddChildComponent],
+  declarations: [ ListChildsComponent, ListstockComponent, AddstockComponent, ListEquipComponent, AddEquipComponent, OffreEntrepriseComponent, ConventionDePartenariatComponent, FootComponent, BasketComponent, EditStockComponent, AddReservationComponent, AddChildComponent],
     imports: [
         CommonModule,
         FormsModule,
@@ -70,21 +62,18 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
         DashboardsModule,
         CryptoModule,
 
-        EmailModule,
+
         HttpClientModule,
         UIModule,
-        UtilityModule,
-        FormModule,
-        IconsModule,
         WidgetModule,
-        MapsModule,
         FullCalendarModule,
         NgbNavModule,
         NgbTooltipModule,
         NgbCollapseModule,
         SimplebarAngularModule,
         LightboxModule,
-        NgbCarouselModule
+        NgbCarouselModule,
+        NgbModule
     ],
 })
 export class PagesModule { }

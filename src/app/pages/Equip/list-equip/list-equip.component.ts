@@ -15,10 +15,12 @@ export class ListEquipComponent implements OnInit {
   totalPages: number=0;
   pageSize:number=3;
   currentPage : number = 1;
+  totalTeams: number = 0;
   constructor(private equipService : EquipService , private router: Router) { }
 
   ngOnInit(): void {
     this.loadEquip();
+    this.loadTotalTeams();
 
   }
   private loadEquip(): void {
@@ -49,6 +51,16 @@ export class ListEquipComponent implements OnInit {
   handleGoToPage(page: number) {
     this.currentPage=page;
     this.loadEquip();
+  }
+  private loadTotalTeams(): void {
+    this.equipService.getTotalTeams().subscribe(
+      (total: number) => {
+        this.totalTeams = total;
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
   }
 
 }
