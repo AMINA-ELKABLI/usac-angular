@@ -3,6 +3,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { EventService } from '../../../core/services/event.service';
 
 import { ConfigService } from '../../../core/services/config.service';
+import {EquipService} from "../../Equip/service/equip.service";
+import {MatchService} from "../../Match/service/match.service";
 
 @Component({
   selector: 'app-default',
@@ -11,86 +13,45 @@ import { ConfigService } from '../../../core/services/config.service';
 })
 export class DefaultComponent implements OnInit {
 
-  isVisible: string;
-
-  transactions: Array<[]>;
-  statData: Array<[]>;
-
-  isActive: string;
+  totalTeams: number = 0;
+  totalMatch: number = 0;
 
   @ViewChild('content') content;
-  constructor(private modalService: NgbModal, private configService: ConfigService, private eventService: EventService) {
+  constructor(private modalService: NgbModal, private configService: ConfigService, private eventService: EventService, private equipService: EquipService , private matchService: MatchService) {
   }
 
-  ngOnInit() {
-
-    /**
-     * horizontal-vertical layput set
-     */
-     const attribute = document.body.getAttribute('data-layout');
-
-     this.isVisible = attribute;
-     const vertical = document.getElementById('layout-vertical');
-     if (vertical != null) {
-       vertical.setAttribute('checked', 'true');
-     }
-     if (attribute == 'horizontal') {
-       const horizontal = document.getElementById('layout-horizontal');
-       if (horizontal != null) {
-         horizontal.setAttribute('checked', 'true');
-         console.log(horizontal);
-       }
-     }
-
-    /**
-     * Fetches the data
-     */
-    this.fetchData();
+  ngOnInit(): void {
+    this.loadTotalTeams();
+    this.loadTotalMatch();
   }
 
-  ngAfterViewInit() {
-    setTimeout(() => {
-      this.openModal();
-    }, 2000);
+  private loadTotalTeams(): void {
+    this.equipService.getTotalTeams().subscribe(
+      (total: number) => {
+        this.totalTeams = total;
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
   }
 
-  /**
-   * Fetches the data
-   */
-  private fetchData() {
-
-    this.isActive = 'year';
-    this.configService.getConfig().subscribe(data => {
-      this.transactions = data.transactions;
-      this.statData = data.statData;
-    });
-  }
-
-  openModal() {
-    this.modalService.open(this.content, { centered: true });
-  }
-
-  weeklyreport() {
-    this.isActive = 'week';
-
-  }
-
-  monthlyreport() {
-    this.isActive = 'month';
-
-  }
-
-  yearlyreport() {
-    this.isActive = 'year';
-
+  private loadTotalMatch(): void {
+    this.matchService.getTotalMatch().subscribe(
+      (total: number) => {
+        this.totalMatch = total;
+      },
+      (err) => {
+        console.error(err);
+      }
+    );
   }
 
 
-  /**
-   * Change the layout onclick
-   * @param layout Change the layout
-   */
+
    changeLayout(layout: string) {
     this.eventService.broadcast('changeLayout', layout);
   }
+
+
 }

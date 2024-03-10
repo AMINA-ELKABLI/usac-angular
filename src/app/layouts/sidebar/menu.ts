@@ -49,6 +49,12 @@ export const MENU: MenuItem[] = [
   },
   {
     id: 9,
+    label: 'Match',
+    icon: '',
+    link: '/listMatch',
+  },
+  {
+    id: 9,
     label: 'Stock',
     icon: '',
     link: '/listStock',

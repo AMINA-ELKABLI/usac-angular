@@ -11,6 +11,7 @@ import {
 import {ListEquipComponent} from "./Equip/list-equip/list-equip.component";
 import {AddEquipComponent} from "./Equip/add-equip/add-equip.component";
 import {EditStockComponent} from "./Stock/edit-stock/edit-stock.component";
+import {ListMatchComponent} from "./Match/list-match/list-match.component";
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' },
   {path: 'listChild', component: ListChildsComponent},
@@ -22,6 +23,7 @@ const routes: Routes = [
   {path:'listEquip' , component:ListEquipComponent},
   {path:'addEquip' , component:AddEquipComponent},
   {path:'listChild', component:ListChildsComponent},
+  {path:'listMatch', component:ListMatchComponent},
   { path: 'dashboards', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule) },
   { path: 'crypto', loadChildren: () => import('./crypto/crypto.module').then(m => m.CryptoModule) },
 ];
