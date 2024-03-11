@@ -30,6 +30,12 @@ export const MENU: MenuItem[] = [
         id: 7,
         isLayout: true
     },
+  {
+    id: 9,
+    label: 'MENUITEMS.CALENDAR.TEXT',
+    icon: 'bx-calendar',
+    link: '/calendar',
+  },
     {
         id: 8,
         label: 'MENUITEMS.APPS.TEXT',

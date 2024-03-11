@@ -12,6 +12,7 @@ import {ListEquipComponent} from "./Equip/list-equip/list-equip.component";
 import {AddEquipComponent} from "./Equip/add-equip/add-equip.component";
 import {EditStockComponent} from "./Stock/edit-stock/edit-stock.component";
 import {ListMatchComponent} from "./Match/list-match/list-match.component";
+import {CalendarComponent} from "./calendar/calendar/calendar.component";
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' },
   {path: 'listChild', component: ListChildsComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path: 'editStock/:id', component: EditStockComponent},
   {path: 'addStock', component: AddstockComponent},
   { path: 'dashboard', component: DefaultComponent },
+  { path: 'calendar', component: CalendarComponent },
   { path: 'convetion', component: ConventionDePartenariatComponent },
   {path:'listEquip' , component:ListEquipComponent},
   {path:'addEquip' , component:AddEquipComponent},

@@ -41,18 +41,19 @@ import { AddReservationComponent } from './reservation/add-reservation/add-reser
 import { AddChildComponent } from './Child/add-child/add-child.component';
 import { AddMatchComponent } from './Match/add-match/add-match.component';
 import { ListMatchComponent } from './Match/list-match/list-match.component';
+import { CalendarComponent } from './calendar/calendar/calendar.component';
 
 
 
 
-FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+FullCalendarModule.registerPlugins([
   dayGridPlugin,
   interactionPlugin,
   bootstrapPlugin
 ]);
 
 @NgModule({
-  declarations: [ ListChildsComponent, ListstockComponent, AddstockComponent, ListEquipComponent, AddEquipComponent, OffreEntrepriseComponent, ConventionDePartenariatComponent, FootComponent, BasketComponent, EditStockComponent, AddReservationComponent, AddChildComponent, AddMatchComponent, ListMatchComponent],
+  declarations: [ ListChildsComponent, ListstockComponent, AddstockComponent, ListEquipComponent, AddEquipComponent, OffreEntrepriseComponent, ConventionDePartenariatComponent, FootComponent, BasketComponent, EditStockComponent, AddReservationComponent, AddChildComponent, AddMatchComponent, ListMatchComponent, CalendarComponent],
     imports: [
         CommonModule,
         FormsModule,
