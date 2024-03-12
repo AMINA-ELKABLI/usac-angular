@@ -34,9 +34,7 @@
           <td>{{ child.guardianName }}</td>
           <td>{{ child.guardianContact }}</td>
           <td>
-            <!-- Afficher le statut actuel -->
             {{ child.status }}
-            <!-- Sélecteur pour changer le statut -->
             <select class="form-control" (change)="updateChildStatus(child.id, $event.target.value)">
               <option value="PENDING" [selected]="child.status === 'PENDING'">PENDING</option>
               <option value="ACCEPTED" [selected]="child.status === 'ACCEPTED'">ACCEPTED</option>
@@ -47,9 +45,7 @@
             <button (click)="deleteChild(child.id)" class="btn btn-outline-danger">
               <i class="bx bx-trash-alt"></i>
             </button>
-            <button class="btn btn-outline-warning">
-              <i class="dripicons-pencil"></i>
-            </button>
+
           </td>
         </tr>
         </tbody>

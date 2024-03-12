@@ -21,7 +21,6 @@ const routes: Routes = [
   {path: 'addStock', component: AddstockComponent},
   { path: 'dashboard', component: DefaultComponent },
   { path: 'calendar', component: CalendarComponent },
-  { path: 'convetion', component: ConventionDePartenariatComponent },
   {path:'listEquip' , component:ListEquipComponent},
   {path:'addEquip' , component:AddEquipComponent},
   {path:'listChild', component:ListChildsComponent},

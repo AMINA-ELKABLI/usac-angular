@@ -46,6 +46,7 @@ import { CalendarComponent } from './calendar/calendar/calendar.component';
 
 
 
+
 FullCalendarModule.registerPlugins([
   dayGridPlugin,
   interactionPlugin,
