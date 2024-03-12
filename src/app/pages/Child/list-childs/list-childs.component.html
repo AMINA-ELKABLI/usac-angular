@@ -20,20 +20,29 @@
           <th scope="col">Address</th>
           <th scope="col">Guardian Name</th>
           <th scope="col">Guardian Contact</th>
+          <th scope="col">Status</th>
           <th scope="col">Action</th>
-
         </tr>
         </thead>
         <tbody>
         <tr *ngFor="let child of childs">
           <th scope="row">{{ child.id }}</th>
-          <td>{{ child.name}}</td>
+          <td>{{ child.name }}</td>
           <td>{{ child.dateOfBirth }}</td>
-          <td>{{ child.gender}}</td>
+          <td>{{ child.gender }}</td>
           <td>{{ child.address }}</td>
-          <td>{{ child.guardianName}}</td>
+          <td>{{ child.guardianName }}</td>
           <td>{{ child.guardianContact }}</td>
-
+          <td>
+            <!-- Afficher le statut actuel -->
+            {{ child.status }}
+            <!-- Sélecteur pour changer le statut -->
+            <select class="form-control" (change)="updateChildStatus(child.id, $event.target.value)">
+              <option value="PENDING" [selected]="child.status === 'PENDING'">PENDING</option>
+              <option value="ACCEPTED" [selected]="child.status === 'ACCEPTED'">ACCEPTED</option>
+              <option value="REJECTED" [selected]="child.status === 'REJECTED'">REJECTED</option>
+            </select>
+          </td>
           <td>
             <button (click)="deleteChild(child.id)" class="btn btn-outline-danger">
               <i class="bx bx-trash-alt"></i>
@@ -45,11 +54,6 @@
         </tr>
         </tbody>
       </table>
-
-      <ul class="nav nav-pills">
-
-      </ul>
     </div>
   </div>
 </div>
-

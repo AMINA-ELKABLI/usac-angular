@@ -1,7 +1,6 @@
-import {Equip} from "./equip.modesl";
-import {Play} from "./play.models";
-import {MatchChild} from "./matchChild";
+
 import {Gender} from "../enums/Gender";
+import {Status} from '../enums/Status';
 
 export class Child {
   id: number;
@@ -11,5 +10,6 @@ export class Child {
   address: string;
   guardianName: string;
   guardianContact: string;
+  status: Status;
 
 }

@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
 import {ApiService} from "../../../service/api.service";
 import {Observable} from "rxjs";
-import {StockPaginationModel} from "../../../core/models/stock-pagination.model";
+
 import {HttpParams} from "@angular/common/http";
-import {Stock} from "../../../core/models/stock.models";
+
 import {Child} from "../../../core/models/child.models";
 import {PageResponse} from "../../../core/models/PageResponse";
+import {Status} from '../../../core/enums/Status';
 
 @Injectable({
   providedIn: 'root'
@@ -27,13 +28,13 @@ export class ChildService {
   }
 
 
-  getById(id: number): Observable<Stock> {
-    return this.apiService.get<Stock>(`/api/v1/stock/${id}`);
+  getById(id: number): Observable<Child> {
+    return this.apiService.get<Child>(`/api/v1/child/${id}`);
+  }
+  updateStatus(id: number, status: Status): Observable<Child> {
+    return this.apiService.put<Child>(`/api/v1/child/${id}/status`, { status });
   }
 
-  update(id: number, stock: Stock): Observable<Stock> {
-    return this.apiService.put<Stock>(`/api/v1/child/${id}`, stock);
-  }
 
   delete(id: number): Observable<void> {
     return this.apiService.delete<void>(`/api/v1/child/${id}`);
