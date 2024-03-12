@@ -90,42 +90,41 @@
           <p class="card-title-desc">Veuillez saisir les informations suivantes :</p>
           <form [formGroup]=" childForm" (ngSubmit)="saveChild()">
           <div class="mb-3 row">
-            <label for="name" class="col-md-2 col-form-label">Nom</label>
+            <label  class="col-md-2 col-form-label">Nom</label>
             <div class="col-md-10">
-              <input class="form-control" type="text" value="" id="name">
+              <input class="form-control" type="text" formControlName="name">
             </div>
           </div>
           <div class="mb-3 row">
-            <label for="dateOfBirth" class="col-md-2 col-form-label">Date de naissance</label>
+            <label for="" class="col-md-2 col-form-label">Date de naissance</label>
             <div class="col-md-10">
-              <input class="form-control" type="date" value="" id="dateOfBirth">
+              <input class="form-control"  type="date" formControlName="dateOfBirth">
             </div>
           </div>
           <div class="mb-3 row">
-            <label for="gender" class="col-md-2 col-form-label">Genre</label>
+            <label>Gender</label>
+            <select formControlName="gender" class="form-select">
+              <option value="MALE">MALE</option>
+              <option value="FEMALE">FEMALE</option>
+
+            </select>
+          </div>
+          <div class="mb-3 row">
+            <label  class="col-md-2 col-form-label">Adresse</label>
             <div class="col-md-10">
-              <select class="form-select" id="gender">
-                <option>Garcon</option>
-                <option>Fille</option>
-              </select>
+              <input class="form-control" type="text" formControlName="address">
             </div>
           </div>
           <div class="mb-3 row">
-            <label for="address" class="col-md-2 col-form-label">Adresse</label>
+            <label  class="col-md-2 col-form-label">Nom du tuteur</label>
             <div class="col-md-10">
-              <input class="form-control" type="text" value="" id="address">
+              <input class="form-control" type="text" formControlName="guardianName">
             </div>
           </div>
           <div class="mb-3 row">
-            <label for="guardianName" class="col-md-2 col-form-label">Nom du tuteur</label>
+            <label  class="col-md-2 col-form-label">Contact du tuteur</label>
             <div class="col-md-10">
-              <input class="form-control" type="text" value="" id="guardianName">
-            </div>
-          </div>
-          <div class="mb-3 row">
-            <label for="guardianContact" class="col-md-2 col-form-label">Contact du tuteur</label>
-            <div class="col-md-10">
-              <input class="form-control" type="tel" value="" id="guardianContact">
+              <input class="form-control" type="text" formControlName="guardianContact">
             </div>
           </div>
 

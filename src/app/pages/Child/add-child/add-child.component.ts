@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {EquipService} from "../../Equip/service/equip.service";
 import {ChildService} from "../service/child.service";
-import {Equip} from "../../../core/models/equip.modesl";
 import {Child} from "../../../core/models/child.models";
 
 @Component({
