@@ -37,8 +37,8 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     document.body.classList.add('auth-body-bg');
     this.loginForm = this.formBuilder.group({
-      email: ['youssef@gmail.com', [Validators.required, Validators.email]],
-      password: ['password', [Validators.required]],
+      email: ['admin.elkabli@gmail.com', [Validators.required, Validators.email]],
+      password: ['admin', [Validators.required]],
     });
 
 

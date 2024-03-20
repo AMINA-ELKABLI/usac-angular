@@ -1,5 +1,5 @@
-import {Play} from "./play.models";
-import {MatchEquip} from "./matchEquip";
+import {Equip} from './equip.modesl';
+
 
 export class Match {
   id: number;
@@ -7,6 +7,5 @@ export class Match {
   matchDate: string;
   location: string;
   type: string;
-  plays: Play[];
-  matchEquips: MatchEquip[];
+  equips: Equip[];
 }

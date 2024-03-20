@@ -1,1 +1,33 @@
-<p>add-match works!</p>
+<div *ngIf="formattedMatchDate" class="mb-3">
+  <strong>Match Date:</strong> {{ formattedMatchDate }}
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title mb-4">Match Form</h4>
+        <form [formGroup]="matchForm" (ngSubmit)="saveMatch()">
+          <label> Name :</label>
+          <input type="text" formControlName="name" class="form-control">
+          <label>Match-Date :</label>
+          <input type="date" formControlName="matchDate" class="form-control">
+          <label> Location :</label>
+          <input type="text" formControlName="location" class="form-control">
+          <label>Type :</label>
+          <input type="text" formControlName="type" class="form-control">
+          <label>Team 1:</label>
+          <select formControlName="equipOne" class="form-control">
+            <option *ngFor="let equip of equips" [value]="equip.id">{{ equip.name }}</option>
+          </select>
+          <label>Team 2:</label>
+          <select formControlName="equipTwo" class="form-control">
+            <option *ngFor="let equip of equips" [value]="equip.id">{{ equip.name }}</option>
+          </select>
+
+          <button type="submit" class="btn btn-success mt-5 mt-lg-0">Save</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

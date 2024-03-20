@@ -3,6 +3,8 @@ import {EquipService} from "../service/equip.service";
 import {Equip} from "../../../core/models/equip.modesl";
 import {Router} from "@angular/router";
 import {Stock} from "../../../core/models/stock.models";
+import {Child} from '../../../core/models/child.models';
+import {ChildService} from '../../Child/service/child.service';
 
 @Component({
   selector: 'app-list-equip',
@@ -14,14 +16,13 @@ export class ListEquipComponent implements OnInit {
   public keyword : string="";
   totalPages: number=0;
   pageSize:number=3;
-  currentPage : number = 1;
+  currentPage: number = 1;
   totalTeams: number = 0;
-  constructor(private equipService : EquipService , private router: Router) { }
+  constructor(private equipService : EquipService, private childService: ChildService , private router: Router) { }
 
   ngOnInit(): void {
     this.loadEquip();
     this.loadTotalTeams();
-
   }
   private loadEquip(): void {
     this.equipService.getAll(this.currentPage, this.pageSize).subscribe(
@@ -41,11 +42,8 @@ export class ListEquipComponent implements OnInit {
         this.loadEquip();
       });
   }
-
-
-
   navigateToAddEquip() {
-    this.router.navigate(['/addEquip'])
+    this.router.navigate(['/addEquip']);
   }
 
   handleGoToPage(page: number) {

@@ -9,7 +9,11 @@
           <input type="text" formControlName="name" class="form-control">
           <label>Description</label>
           <input type="text" formControlName="description" class="form-control">
-
+          <label>Children</label>
+          <label>Children</label>
+          <select multiple formControlName="childIds" class="form-control">
+            <option *ngFor="let child of children" [ngValue]="child.id">{{ child.name }}</option>
+          </select>
           <button type="submit" class="btn btn-success mt-5 mt-lg-0">Save</button>
         </form>
       </div>

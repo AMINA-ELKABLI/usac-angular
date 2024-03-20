@@ -1,12 +1,10 @@
-import {Child} from "./child.models";
-import {MatchEquip} from "./matchEquip";
+import {Child} from './child.models';
 
 
 export class Equip {
   id: number;
   name: string;
   description: string;
-  children: Child[];
-  matchEquips: MatchEquip[];
+  children?: Child[];
 
 }

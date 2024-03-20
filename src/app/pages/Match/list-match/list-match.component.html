@@ -22,6 +22,7 @@
           <th scope="col">Match-Date</th>
           <th scope="col">Location</th>
           <th scope="col">Type</th>
+          <th scope="col">Equips </th>
           <th scope="col">Action</th>
         </tr>
         </thead>
@@ -31,27 +32,46 @@
           <td>{{ matchs.name }}</td>
           <td>{{ matchs.matchDate }}</td>
           <td>{{ matchs.location }}</td>
-          <td>{{ matchs.type | json }}</td>
+          <td>{{ matchs.type }}</td>
           <td>
-            <button  class="btn btn-outline-danger">
+            <ul>
+              <li *ngFor="let equip of matchs.equips">
+                <form (ngSubmit)="test()">
+                  <input class="form-control form-control-sm" type="hidden" [value]="equip.id">
+                  <button type="submit" class="btn btn-primary" [ngModel]="amina"  (click)="openChildrenModal(childrenModal)">Voir les enfants
+                  </button>
+                </form>
+              </li>
+            </ul>
+          </td>
+
+          <button  class="btn btn-outline-danger">
               <i class="bx bx-trash-alt"></i>
             </button>
             <button  class="btn btn-outline-warning">
               <i class="dripicons-pencil"></i>
             </button>
-          </td>
+
         </tr>
         </tbody>
       </table>
 
-      <ul class="nav nav-pills">
-        <li *ngFor="let page of [].constructor(totalPages); let i=index">
-          <button (click)="handleGoToPage(i + 1)"
-                  [ngClass]="currentPage === (i + 1) ? 'btn btn-success m-1' : 'btn btn-outline-success m-1'">
-            {{ i + 1 }}
-          </button>
-        </li>
-      </ul>
+
     </div>
   </div>
 </div>
+
+
+<ng-template #childrenModal  let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title mt-0">Children List</h4>
+    <button type="button" class="btn-close" (click)="modal.dismiss('Cross click')" aria-hidden="true">
+
+    </button>
+  </div>
+  <div class="modal-body">
+    <ul>
+      <li *ngFor="let child of selectedEquipChildren">{{ child.name }}</li>
+    </ul>
+  </div>
+</ng-template>

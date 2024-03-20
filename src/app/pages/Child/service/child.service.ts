@@ -39,4 +39,15 @@ export class ChildService {
   delete(id: number): Observable<void> {
     return this.apiService.delete<void>(`/api/v1/child/${id}`);
   }
+
+  countAcceptedChildren(): Observable<number> {
+    return this.apiService.get<number>('/api/v1/child/count/accepted');
+  }
+
+  getAcceptedChildren(): Observable<Child[]> {
+    return this.apiService.get<Child[]>('/api/v1/child/accepted');
+  }
+
+
+
 }

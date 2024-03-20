@@ -13,13 +13,13 @@
           </button>
         </div>
       </div>
-
       <table class="table">
         <thead>
         <tr>
           <th scope="col">#</th>
           <th scope="col">Name</th>
           <th scope="col">Description</th>
+          <th scope="col">Children</th>
           <th scope="col">Action</th>
         </tr>
         </thead>
@@ -28,6 +28,7 @@
           <th scope="row">{{ equip.id }}</th>
           <td>{{ equip.name }}</td>
           <td>{{ equip.description }}</td>
+          <td>{{ equip.childIds}}</td>
           <td>
             <button (click)="deleteStock(equip.id)" class="btn btn-outline-danger">
               <i class="bx bx-trash-alt"></i>
@@ -39,7 +40,6 @@
         </tr>
         </tbody>
       </table>
-
       <ul class="nav nav-pills">
         <li *ngFor="let page of [].constructor(totalPages); let i=index">
           <button (click)="handleGoToPage(i + 1)"

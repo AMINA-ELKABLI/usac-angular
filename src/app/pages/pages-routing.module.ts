@@ -13,6 +13,7 @@ import {AddEquipComponent} from "./Equip/add-equip/add-equip.component";
 import {EditStockComponent} from "./Stock/edit-stock/edit-stock.component";
 import {ListMatchComponent} from "./Match/list-match/list-match.component";
 import {CalendarComponent} from "./calendar/calendar/calendar.component";
+import {AddMatchComponent} from './Match/add-match/add-match.component';
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' },
   {path: 'listChild', component: ListChildsComponent},
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path:'addEquip' , component:AddEquipComponent},
   {path:'listChild', component:ListChildsComponent},
   {path:'listMatch', component:ListMatchComponent},
+  {path:'addMatch', component:AddMatchComponent},
   { path: 'dashboards', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule) },
   { path: 'crypto', loadChildren: () => import('./crypto/crypto.module').then(m => m.CryptoModule) },
 ];

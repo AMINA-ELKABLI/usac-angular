@@ -10,53 +10,40 @@ export const MENU: MenuItem[] = [
         id: 2,
         label: 'MENUITEMS.DASHBOARDS.TEXT',
         icon: 'bx-home-circle',
-        badge: {
-            variant: 'info',
-            text: 'MENUITEMS.DASHBOARDS.BADGE',
-        },
-        subItems: [
-            {
-                id: 3,
-                label: 'MENUITEMS.DASHBOARDS.LIST.DEFAULT',
-                link: '/dashboard',
-                parentId: 2
-            },
-
-
-
-        ]
+        link: '/dashboard',
     },
     {
         id: 7,
         isLayout: true
     },
   {
+    id: 8,
+    label: 'MENUITEMS.APPS.TEXT',
+    isTitle: true
+  },
+  {
     id: 9,
     label: 'MENUITEMS.CALENDAR.TEXT',
     icon: 'bx-calendar',
     link: '/calendar',
   },
-    {
-        id: 8,
-        label: 'MENUITEMS.APPS.TEXT',
-        isTitle: true
-    },
+
   {
     id: 9,
     label: 'Child',
-    icon: '',
+    icon: 'bx bx-user-plus',
     link: '/listChild',
   },
   {
     id: 9,
     label: 'Team',
-    icon: '',
+    icon: 'bx bxs-group',
     link: '/listEquip',
   },
   {
     id: 9,
     label: 'Match',
-    icon: '',
+    icon: 'bx bx-football',
     link: '/listMatch',
   },
   {
@@ -72,15 +59,7 @@ export const MENU: MenuItem[] = [
         id: 21,
         label: 'MENUITEMS.HOME.TEXT',
         icon: 'bx bx-home',
-        subItems: [
-
-            {
-                id: 28,
-                label: 'Home',
-                link: '/crypto-ico-landing',
-                parentId: 21
-            }
-        ]
+         link: '/home',
     },
 
 

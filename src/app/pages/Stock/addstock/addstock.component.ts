@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {StockService} from "../service/stock.service";
 import {Stock} from "../../../core/models/stock.models";
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-addstock',
@@ -12,7 +13,7 @@ export class AddstockComponent implements OnInit {
   stockForm!: FormGroup;
 
 
-  constructor(private fb: FormBuilder, private stockService: StockService) {}
+  constructor(private fb: FormBuilder, private stockService: StockService,   private router: Router) {}
 
 
   ngOnInit() {
@@ -37,6 +38,7 @@ export class AddstockComponent implements OnInit {
     this.stockService.create(stock).subscribe({
       next: data => {
         alert(JSON.stringify(data));
+        this.router.navigate(['/listStock']);
       },
       error: err => {
         console.log(err);

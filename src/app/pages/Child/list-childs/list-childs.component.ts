@@ -13,10 +13,14 @@ export class ListChildsComponent implements OnInit {
   currentPage: number = 0;
   pageSize: number = 10;
   totalItems: number = 0;
+  acceptedChildrenCount: number = 0;
   constructor(private childService: ChildService) { }
 
   ngOnInit(): void {
     this.getAllChilds();
+    this.childService.countAcceptedChildren().subscribe(count => {
+      this.acceptedChildrenCount = count;
+    });
   }
 
   getAllChilds(): void {

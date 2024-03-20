@@ -35,6 +35,9 @@ export class MatchService {
   update(id: number, match: Match): Observable<Match> {
     return this.apiService.put<Match>(`/api/v1/match/${id}`, match);
   }
+  getMatchDates(): Observable<Date[]> {
+    return this.apiService.get<Date[]>(`/api/v1/match/date`);
+  }
 
   delete(id: number): Observable<void> {
     return this.apiService.delete<void>(`/api/v1/match/${id}`);

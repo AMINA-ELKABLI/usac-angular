@@ -1,11 +1,9 @@
+
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import {Observable, Subject, throwError} from 'rxjs';
 
 import { AuthenticationService } from '../services/auth.service';
-import { AuthfakeauthenticationService } from '../services/authfake.service';
-
-import { environment } from '../../../environments/environment';
 import {catchError, switchMap, tap} from "rxjs/operators";
 import {authUtils} from "../../authUtils";
 import {Router} from "@angular/router";

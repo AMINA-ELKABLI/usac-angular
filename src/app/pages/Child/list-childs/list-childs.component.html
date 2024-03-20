@@ -34,7 +34,7 @@
           <td>{{ child.guardianName }}</td>
           <td>{{ child.guardianContact }}</td>
           <td>
-            {{ child.status }}
+
             <select class="form-control" (change)="updateChildStatus(child.id, $event.target.value)">
               <option value="PENDING" [selected]="child.status === 'PENDING'">PENDING</option>
               <option value="ACCEPTED" [selected]="child.status === 'ACCEPTED'">ACCEPTED</option>

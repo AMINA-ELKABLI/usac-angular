@@ -1,10 +1,12 @@
 import {Component, OnInit, TemplateRef, ViewChild} from '@angular/core';
-import Swal from "sweetalert2";
+
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {CalendarOptions, EventApi} from "@fullcalendar/angular";
-import {EventClickArg} from "@fullcalendar/core";
 import {NgbModal} from "@ng-bootstrap/ng-bootstrap";
-import {createEventId} from "./data";
+
+import {MatchService} from '../../Match/service/match.service';
+import {EventInput} from '@fullcalendar/core';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-calendar',
@@ -12,89 +14,110 @@ import {createEventId} from "./data";
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements  OnInit {
-
-  // bread crumb items
-  breadCrumbItems: Array<{}>;
-
-@ViewChild('modalShow') modalShow: TemplateRef<any>;
-@ViewChild('editmodalShow') editmodalShow: TemplateRef<any>;
-
-  formEditData: FormGroup;
-  submitted = false;
-  category: any[];
-  newEventDate: any;
-  editEvent: any;
-  calendarEvents: any[];
-  // event form
+  breadCrumbItems: Array<{}> = [
+    { label: 'Home', path: '/' },
+    { label: 'Calendar', path: '/', active: true }
+  ];
+  calendarOptions: CalendarOptions;
   formData: FormGroup;
+  formEditData: FormGroup;
+  localEvents: EventInput[] = [];
+  submitted = false;
+  @ViewChild('modalShow') modalShow: TemplateRef<any>;
+  @ViewChild('editmodalShow') editmodalShow: TemplateRef<any>;
 
-  calendarOptions: CalendarOptions = {
-    headerToolbar: {
-      left: 'dayGridMonth,dayGridWeek,dayGridDay',
-      center: 'title',
-      right: 'prevYear,prev,next,nextYear'
-    },
-    initialView: "dayGridMonth",
-    themeSystem: "bootstrap",
-
-    weekends: true,
-    editable: true,
-    selectable: true,
-    selectMirror: true,
-    dayMaxEvents: true,
-    dateClick: this.openModal.bind(this),
-    eventClick: this.handleEventClick.bind(this),
-    eventsSet: this.handleEvents.bind(this),
-    eventTimeFormat: { // like '14:30:00'
-      hour: '2-digit',
-      minute: '2-digit',
-      meridiem: false,
-      hour12: true
-    }
-  };
-  currentEvents: EventApi[] = [];
+  constructor(
+    private modalService: NgbModal,
+    private formBuilder: FormBuilder,
+    private matchService: MatchService
+  ) {}
 
   ngOnInit(): void {
-    this.breadCrumbItems = [{ label: 'Skote' }, { label: 'Calendar', active: true }];
-
     this.formData = this.formBuilder.group({
       title: ['', [Validators.required]],
-      category: ['', [Validators.required]],
+
     });
 
     this.formEditData = this.formBuilder.group({
       editTitle: ['', [Validators.required]],
-      editCategory: [],
+
     });
-    this._fetchData();
+
+    this.initializeCalendarOptions();
+    this.loadMatches();
   }
 
-  /**
-   * Event click modal show
-   */
-  handleEventClick(clickInfo: EventClickArg) {
-    this.editEvent = clickInfo.event;
-    this.formEditData = this.formBuilder.group({
-      editTitle: clickInfo.event.title,
-      editCategory: clickInfo.event.classNames[0],
+  private initializeCalendarOptions() {
+    this.calendarOptions = {
+      initialView: 'dayGridMonth',
+      headerToolbar: {
+        left: 'prev,next today',
+        center: 'title',
+        right: 'dayGridMonth,timeGridWeek,timeGridDay'
+      },
+      themeSystem: 'bootstrap',
+      weekends: true,
+      editable: true,
+      selectable: true,
+      selectMirror: true,
+      dayMaxEvents: true,
+      events: this.localEvents,
+    };
+  }
+
+  private loadMatches() {
+    this.matchService.getAll().subscribe(matchPaginationModel => {
+      this.localEvents = matchPaginationModel.content.map(match => ({
+        id: match.id.toString(),
+        title: match.name,
+        start: match.matchDate,
+      }));
+      this.calendarOptions.events = this.localEvents;
     });
-    this.modalService.open(this.editmodalShow);
+  }
+
+  openModal() {
+    this.modalService.open(this.modalShow);
+  }
+
+  closeEventModal() {
+    this.modalService.dismissAll();
+  }
+
+  saveEvent() {
+    this.submitted = true;
+    if (this.formData.valid) {
+      const newEvent: EventInput = {
+        id: Date.now().toString(),
+        title: this.formData.value.title,
+        start: new Date().toISOString(),
+      };
+      this.localEvents.push(newEvent);
+      this.calendarOptions.events = this.localEvents;
+      this.modalService.dismissAll();
+    }
+  }
+
+  editEventSave() {
+    if (this.formEditData.valid) {
+      // Exemple de mise à jour d'un événement existant.
+      // Vous aurez besoin d'une logique pour identifier et mettre à jour l'événement correct dans `localEvents`.
+      const eventIndex = this.localEvents.findIndex(event => event.id === "idDeLevenementAEditer"); // Assurez-vous de remplacer par la logique appropriée pour trouver l'ID
+      if (eventIndex !== -1) {
+        const updatedEvent = { ...this.localEvents[eventIndex], ...{
+            title: this.formEditData.value.editTitle,
+
+            // Mettez à jour d'autres propriétés de l'événement si nécessaire
+          }};
+        this.localEvents[eventIndex] = updatedEvent;
+        this.calendarOptions.events = this.localEvents; // Mettez à jour les événements du calendrier
+      }
+      this.modalService.dismissAll(); // Fermez le modal après la mise à jour
+    }
   }
 
 
-  handleEvents(events: EventApi[]) {
-    this.currentEvents = events;
-  }
-
-  constructor(
-    private modalService: NgbModal,
-    private formBuilder: FormBuilder
-) {}
-
-  get form() {
-    return this.formData.controls;
-  }
-
+  // Méthode d'exemple pour montrer une boîte de dialogue de confirmation
   confirm() {
     Swal.fire({
       title: 'Are you sure?',
@@ -106,99 +129,9 @@ export class CalendarComponent implements  OnInit {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.value) {
-        this.deleteEventData();
-        Swal.fire('Deleted!', 'Event has been deleted.', 'success');
+        // Implémentez la logique pour supprimer un événement
+        Swal.fire('Deleted!', 'Your event has been deleted.', 'success');
       }
     });
   }
-
-  position() {
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Event has been saved',
-      showConfirmButton: false,
-      timer: 1000,
-    });
-  }
-
-  openModal(event?: any) {
-    this.newEventDate = event;
-    this.modalService.open(this.modalShow);
-  }
-
-  editEventSave() {
-    const editTitle = this.formEditData.get('editTitle').value;
-    const editCategory = this.formEditData.get('editCategory').value;
-
-    const editId = this.calendarEvents.findIndex(
-      (x) => x.id + '' === this.editEvent.id + ''
-    );
-
-    this.editEvent.setProp('title', editTitle);
-    this.editEvent.setProp('classNames', editCategory);
-
-    this.calendarEvents[editId] = {
-      ...this.editEvent,
-      title: editTitle,
-      id: this.editEvent.id,
-      classNames: editCategory + ' ' + 'text-white',
-    };
-
-    this.position();
-    this.formEditData = this.formBuilder.group({
-      editTitle: '',
-      editCategory: '',
-    });
-    this.modalService.dismissAll();
-  }
-
-  deleteEventData() {
-    this.editEvent.remove();
-    this.modalService.dismissAll();
-  }
-
-  closeEventModal() {
-    this.formData = this.formBuilder.group({
-      title: '',
-      category: '',
-    });
-    this.modalService.dismissAll();
-  }
-
-  saveEvent() {
-    if (this.formData.valid) {
-      const title = this.formData.get('title').value;
-      const className = this.formData.get('category').value;
-      const calendarApi = this.newEventDate.view.calendar;
-      calendarApi.addEvent({
-        id: createEventId(),
-        title,
-        start: this.newEventDate.date,
-        end: this.newEventDate.date,
-        className: className + ' ' + 'text-white'
-      });
-      this.position();
-      this.formData = this.formBuilder.group({
-        title: '',
-        category: '',
-      });
-      this.modalService.dismissAll();
-    }
-    this.submitted = true;
-  }
-
-  /**
-   * Fetches the data
-   */
-private _fetchData() {
-    // Event category
-   // this.category = category;
-    // Calender Event Data
-    //this.calendarEvents = calendarEvents;
-    // form submit
-    this.submitted = false;
-  }
-
-
 }
