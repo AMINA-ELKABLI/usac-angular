@@ -36,6 +36,11 @@ export class ListChildsComponent implements OnInit {
   }
 
   deleteChild(id: number) {
+    if(confirm("You are sur ?"))
+      this.childService.delete(id).subscribe(() => {
+        console.log(`Child with ID ${id} deleted successfully.`);
+        this.getAllChilds();
+      });
 
   }
   updateChildStatus(id: number, newStatus: Status) {

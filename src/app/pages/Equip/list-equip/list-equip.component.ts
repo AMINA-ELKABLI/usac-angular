@@ -2,8 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {EquipService} from "../service/equip.service";
 import {Equip} from "../../../core/models/equip.modesl";
 import {Router} from "@angular/router";
-import {Stock} from "../../../core/models/stock.models";
-import {Child} from '../../../core/models/child.models';
 import {ChildService} from '../../Child/service/child.service';
 
 @Component({
@@ -15,7 +13,7 @@ export class ListEquipComponent implements OnInit {
   public equips :Array<Equip>=[];
   public keyword : string="";
   totalPages: number=0;
-  pageSize:number=3;
+  pageSize:number=10;
   currentPage: number = 1;
   totalTeams: number = 0;
   constructor(private equipService : EquipService, private childService: ChildService , private router: Router) { }
@@ -25,20 +23,20 @@ export class ListEquipComponent implements OnInit {
     this.loadTotalTeams();
   }
   private loadEquip(): void {
-    this.equipService.getAll(this.currentPage, this.pageSize).subscribe(
+    this.equipService.getAll(this.currentPage - 1, this.pageSize).subscribe(
       (equips: Equip[]) => {
         this.equips = equips;
-        this.totalPages = Math.ceil(equips.length / this.pageSize);
+
       },
       (err) => {
         console.log(err);
       }
     );
   }
-  deleteStock(id: number): void {
+  deleteEquip(id: number): void {
     if(confirm("You are sur ?"))
       this.equipService.delete(id).subscribe(() => {
-        console.log(`Stock with ID ${id} deleted successfully.`);
+        console.log(`Team with ID ${id} deleted successfully.`);
         this.loadEquip();
       });
   }
@@ -54,6 +52,7 @@ export class ListEquipComponent implements OnInit {
     this.equipService.getTotalTeams().subscribe(
       (total: number) => {
         this.totalTeams = total;
+        this.totalPages = Math.ceil(this.totalTeams / this.pageSize);
       },
       (err) => {
         console.error(err);

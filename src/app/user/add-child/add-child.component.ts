@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
-import {ChildService} from "../service/child.service";
-import {Child} from "../../../core/models/child.models";
+import {ChildService} from "../../pages/Child/service/child.service";
+import {Child} from "../../core/models/child.models";
 
 @Component({
   selector: 'app-add-child',

@@ -37,4 +37,16 @@ export class AuthfakeauthenticationService {
         localStorage.removeItem('currentUser');
         this.currentUserSubject.next(null);
     }
+   isUserAdmin(): boolean {
+    // Implémentez la logique pour déterminer si l'utilisateur est un admin
+    // Cela pourrait impliquer de vérifier un token JWT, des données stockées localement, etc.
+    return true; // Retourner 'true' si admin, 'false' sinon
+  }
+
+  currentAccessToken(): string {
+    // Implémentation existante pour récupérer le token d'accès actuel
+    return '';
+  }
+
+
 }

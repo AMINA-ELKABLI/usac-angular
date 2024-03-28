@@ -10,6 +10,8 @@ import { first } from 'rxjs/operators';
 import { environment } from '../../../../environments/environment';
 import Swal from "sweetalert2";
 import {HttpErrorResponse} from "@angular/common/http";
+import {User} from '../../../core/models/auth.models';
+import {authUtils} from '../../../authUtils';
 
 @Component({
   selector: 'app-login',
@@ -30,7 +32,8 @@ export class LoginComponent implements OnInit {
   submitted = false;
   error = '';
   returnUrl: string;
-
+  user: User;
+  access: string;
 
   year: number = new Date().getFullYear();
 
@@ -61,7 +64,8 @@ export class LoginComponent implements OnInit {
     this.authenticationService.login(this.dataForm.email.value, this.dataForm.password.value)
       .subscribe({
         next: () => {
-          console.log('DONE');
+          this.access = authUtils.getAccessToken();
+          console.log(this.access);
           this.router.navigate(['/dashboard']);
         },
         error: (error) => {

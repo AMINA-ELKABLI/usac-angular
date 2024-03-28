@@ -1,0 +1,25 @@
+.team-button {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 10px;
+}
+
+.team-name {
+  font-weight: bold;
+  margin-bottom: 5px; /* Ajustez l'espacement selon vos besoins */
+}
+
+.view-children {
+  font-size: 0.8em; /* Ajustez la taille de police selon vos besoins */
+  color: #007bff; /* Couleur Bootstrap pour les liens, ajustez selon le thème */
+}
+ul {
+  list-style-type: none; /* Supprime les puces */
+  padding: 0; /* Optionnel: supprime le padding par défaut */
+  margin: 0; /* Optionnel: supprime la marge par défaut */
+}
+
+li {
+  /* Styles supplémentaires pour les éléments <li> si nécessaire */
+}

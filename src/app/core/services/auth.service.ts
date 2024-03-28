@@ -67,5 +67,8 @@ export class AuthenticationService {
         })
       );
   }
+  getAccessToken(){
+    return authUtils.getAccessToken();
+  }
 }
 

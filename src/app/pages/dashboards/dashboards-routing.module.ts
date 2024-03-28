@@ -5,10 +5,6 @@ import { DefaultComponent } from './default/default.component';
 
 
 const routes: Routes = [
-    {
-        path: 'default',
-        component: DefaultComponent
-    },
 
 ];
 

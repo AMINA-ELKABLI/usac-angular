@@ -14,7 +14,6 @@ import {Router} from '@angular/router';
 export class AddEquipComponent implements OnInit {
   equipForm!: FormGroup;
   public children: Child[] = [];
-
   constructor(private fb: FormBuilder,
               private equipService: EquipService,
               private childService: ChildService,
@@ -26,8 +25,6 @@ export class AddEquipComponent implements OnInit {
       childIds: [[], Validators.required],
     });
   }
-
-
   ngOnInit() {
     this.loadAcceptedChildren();
   }
@@ -43,17 +40,15 @@ export class AddEquipComponent implements OnInit {
   }
 
   saveEquip() {
-
-
     if (this. equipForm.invalid) {
       return;
     }
-
     let equip: Equip = this.equipForm.value;
     console.log("###### equip ",equip);
     this.equipService.create(equip).subscribe({
       next: data => {
         alert(JSON.stringify(data));
+        this.router.navigate(['/listEquip']);
       },
       error: err => {
         console.log(err);

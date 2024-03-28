@@ -28,14 +28,14 @@ export class EquipService {
   }
 
   delete(id: number): Observable<void> {
-    return this.apiService.delete<void>("/api/v1/equip/${id}");
+    return this.apiService.delete<void>(`/api/v1/equip/${id}`);
   }
 
   public getTotalTeams(): Observable<number> {
     return this.apiService.getTotal();
   }
   getChildrenByEquipId(equipId: number): Observable<Child[]> {
-    return this.apiService.get<Child[]>(`/equip/${equipId}/children`);
+    return this.apiService.get<Child[]>(`/api/v1/equip/${equipId}/children`);
   }
 
 

@@ -27,12 +27,9 @@ export class AddstockComponent implements OnInit {
   }
 
   saveStock() {
-
-
     if (this. stockForm.invalid) {
       return;
     }
-
     let stock: Stock = this.stockForm.value;
     console.log("###### stock ",stock);
     this.stockService.create(stock).subscribe({

@@ -10,7 +10,7 @@
           <label>Description</label>
           <input type="text" formControlName="description" class="form-control">
           <label>Children</label>
-          <label>Children</label>
+
           <select multiple formControlName="childIds" class="form-control">
             <option *ngFor="let child of children" [ngValue]="child.id">{{ child.name }}</option>
           </select>

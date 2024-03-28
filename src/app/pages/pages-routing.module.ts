@@ -14,20 +14,22 @@ import {EditStockComponent} from "./Stock/edit-stock/edit-stock.component";
 import {ListMatchComponent} from "./Match/list-match/list-match.component";
 import {CalendarComponent} from "./calendar/calendar/calendar.component";
 import {AddMatchComponent} from './Match/add-match/add-match.component';
+import {AdminGuard} from '../core/guards/admin.guard';
+import {AuthGuard} from '../core/guards/auth.guard';
 const routes: Routes = [
   { path: '', redirectTo: 'dashboard' },
-  {path: 'listChild', component: ListChildsComponent},
-  {path: 'listStock', component: ListstockComponent},
-  {path: 'editStock/:id', component: EditStockComponent},
-  {path: 'addStock', component: AddstockComponent},
-  { path: 'dashboard', component: DefaultComponent },
-  { path: 'calendar', component: CalendarComponent },
-  {path:'listEquip' , component:ListEquipComponent},
-  {path:'addEquip' , component:AddEquipComponent},
-  {path:'listChild', component:ListChildsComponent},
-  {path:'listMatch', component:ListMatchComponent},
-  {path:'addMatch', component:AddMatchComponent},
   { path: 'dashboards', loadChildren: () => import('./dashboards/dashboards.module').then(m => m.DashboardsModule) },
+  {path: 'listChild', component: ListChildsComponent , canActivate: [AdminGuard]},
+  {path: 'listStock', component: ListstockComponent , canActivate: [AdminGuard]},
+  {path: 'editStock/:id', component: EditStockComponent , canActivate: [AdminGuard]},
+  {path: 'addStock', component: AddstockComponent, canActivate: [AdminGuard]},
+  { path: 'dashboard', component: DefaultComponent , canActivate: [AdminGuard]},
+  { path: 'calendar', component: CalendarComponent , canActivate: [AdminGuard]},
+  {path: 'listEquip' , component: ListEquipComponent , canActivate: [AdminGuard]},
+  {path: 'addEquip' , component: AddEquipComponent , canActivate: [AdminGuard] },
+  {path: 'listChild', component: ListChildsComponent , canActivate: [AdminGuard]},
+  {path: 'listMatch', component: ListMatchComponent , canActivate: [AdminGuard]},
+  {path: 'addMatch', component: AddMatchComponent , canActivate: [AdminGuard] },
   { path: 'crypto', loadChildren: () => import('./crypto/crypto.module').then(m => m.CryptoModule) },
 ];
 

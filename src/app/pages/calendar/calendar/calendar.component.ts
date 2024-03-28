@@ -40,7 +40,6 @@ export class CalendarComponent implements  OnInit {
 
     this.formEditData = this.formBuilder.group({
       editTitle: ['', [Validators.required]],
-
     });
 
     this.initializeCalendarOptions();
@@ -62,6 +61,7 @@ export class CalendarComponent implements  OnInit {
       selectMirror: true,
       dayMaxEvents: true,
       events: this.localEvents,
+
     };
   }
 
@@ -71,6 +71,7 @@ export class CalendarComponent implements  OnInit {
         id: match.id.toString(),
         title: match.name,
         start: match.matchDate,
+        color: '#FF5733',
       }));
       this.calendarOptions.events = this.localEvents;
     });
@@ -91,6 +92,7 @@ export class CalendarComponent implements  OnInit {
         id: Date.now().toString(),
         title: this.formData.value.title,
         start: new Date().toISOString(),
+        color: '#FF5733',
       };
       this.localEvents.push(newEvent);
       this.calendarOptions.events = this.localEvents;
@@ -100,24 +102,19 @@ export class CalendarComponent implements  OnInit {
 
   editEventSave() {
     if (this.formEditData.valid) {
-      // Exemple de mise à jour d'un événement existant.
-      // Vous aurez besoin d'une logique pour identifier et mettre à jour l'événement correct dans `localEvents`.
-      const eventIndex = this.localEvents.findIndex(event => event.id === "idDeLevenementAEditer"); // Assurez-vous de remplacer par la logique appropriée pour trouver l'ID
+       const eventIndex = this.localEvents.findIndex(event => event.id === "idDeLevenementAEditer"); // Assurez-vous de remplacer par la logique appropriée pour trouver l'ID
       if (eventIndex !== -1) {
         const updatedEvent = { ...this.localEvents[eventIndex], ...{
             title: this.formEditData.value.editTitle,
 
-            // Mettez à jour d'autres propriétés de l'événement si nécessaire
           }};
         this.localEvents[eventIndex] = updatedEvent;
-        this.calendarOptions.events = this.localEvents; // Mettez à jour les événements du calendrier
+        this.calendarOptions.events = this.localEvents;
       }
       this.modalService.dismissAll(); // Fermez le modal après la mise à jour
     }
   }
 
-
-  // Méthode d'exemple pour montrer une boîte de dialogue de confirmation
   confirm() {
     Swal.fire({
       title: 'Are you sure?',
@@ -129,9 +126,19 @@ export class CalendarComponent implements  OnInit {
       confirmButtonText: 'Yes, delete it!',
     }).then((result) => {
       if (result.value) {
-        // Implémentez la logique pour supprimer un événement
+
         Swal.fire('Deleted!', 'Your event has been deleted.', 'success');
       }
     });
   }
+  private getColorForMatchType(matchType: string): string {
+    const colorMap = {
+      'Type1': '#FF5733',
+      'Type2': '#3375FF',
+      // Ajoutez d'autres mappings ici
+    };
+
+    return colorMap[matchType] || '#CCCCCC';
+  }
+
 }

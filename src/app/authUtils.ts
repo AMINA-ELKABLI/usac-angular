@@ -20,8 +20,6 @@ class AuthUtils {
   }
 
   setLoggedCredentials(jwtAuthenticationResponse: JwtAuthenticationResponse) {
-    // if (user)
-    //   sessionStorage.setItem('authUser', JSON.stringify(user));
     if (jwtAuthenticationResponse) {
       this.setAccessToken(jwtAuthenticationResponse.access_token);
       this.setRefreshToken(jwtAuthenticationResponse.refresh_token);
@@ -62,6 +60,9 @@ class AuthUtils {
   }
 
   currentAccessToken() {
+    return sessionStorage.getItem('access_token') ?? null;
+  }
+  getAccessToken() {
     return sessionStorage.getItem('access_token') ?? null;
   }
 

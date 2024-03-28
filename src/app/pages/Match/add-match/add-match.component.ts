@@ -6,6 +6,7 @@ import {Match} from '../../../core/models/match.models';
 import {Equip} from '../../../core/models/equip.modesl';
 import {EquipService} from '../../Equip/service/equip.service';
 import {DatePipe} from '@angular/common';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-match',
@@ -52,7 +53,26 @@ export class AddMatchComponent implements OnInit {
       }
     });
   }
+
+  get matchData() {
+    return this.matchForm.controls;
+  }
+
+  check(){
+    if ( this.matchData.equipOne.value === this.matchData.equipTwo){
+      Swal.fire({
+        title: 'Error  ?',
+        text: 'You Can not choosing the same team !',
+        icon: 'error',
+        showCancelButton: false,
+        confirmButtonColor: '#34c38f',
+        cancelButtonColor: '#f46a6a',
+        confirmButtonText: 'Ok!'
+      });
+    }
+  }
   saveMatch() {
+    this.check();
     if (this.matchForm.invalid) {
       return;
     }

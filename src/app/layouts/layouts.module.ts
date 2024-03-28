@@ -17,10 +17,12 @@ import { VerticalComponent } from './vertical/vertical.component';
 import { HorizontaltopbarComponent } from './horizontaltopbar/horizontaltopbar.component';
 import { LanguageService } from '../core/services/language.service';
 import { TranslateModule } from '@ngx-translate/core';
+import {UserLayout} from './user/user-layout.component';
+import {FormsModule} from '@angular/forms';
 
 @NgModule({
   // tslint:disable-next-line: max-line-length
-  declarations: [LayoutComponent, SidebarComponent, TopbarComponent, FooterComponent, RightsidebarComponent, HorizontalComponent, VerticalComponent, HorizontaltopbarComponent],
+  declarations: [LayoutComponent, SidebarComponent, TopbarComponent, FooterComponent, RightsidebarComponent, HorizontalComponent, VerticalComponent, HorizontaltopbarComponent, UserLayout],
   imports: [
     CommonModule,
     TranslateModule,
@@ -28,7 +30,8 @@ import { TranslateModule } from '@ngx-translate/core';
     NgbDropdownModule,
     ClickOutsideModule,
     UIModule,
-    SimplebarAngularModule
+    SimplebarAngularModule,
+    FormsModule
   ],
   providers: [LanguageService]
 })

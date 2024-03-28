@@ -5,7 +5,7 @@ import { AuthenticationService } from '../services/auth.service';
 import { AuthfakeauthenticationService } from '../services/authfake.service';
 
 import { environment } from '../../../environments/environment';
-import {authUtils} from "../../authUtils";
+import {authUtils} from '../../authUtils';
 
 @Injectable({ providedIn: 'root' })
 export class AuthGuard implements CanActivate {
@@ -16,14 +16,14 @@ export class AuthGuard implements CanActivate {
   ) { }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const access_token = authUtils.currentAccessToken();
+    const accessToken = authUtils.getAccessToken();
 
-    if (access_token) {
+    if (accessToken) {
       // logged in so return true
       return true;
+    }else {
+      this.router.navigate(['/account/auth/login'], { queryParams: { returnUrl: state.url } });
+      return false;
     }
-    // not logged in so redirect to login page with the return url
-    this.router.navigate(['/account/auth/login'], { queryParams: { returnUrl: state.url } });
-    return false;
   }
 }

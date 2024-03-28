@@ -6,6 +6,7 @@ import {MatchPaginationModel} from "../../../core/models/MatchPaginationModel.mo
 import {Child} from '../../../core/models/child.models';
 import {EquipService} from '../../Equip/service/equip.service';
 import {NgbModal} from '@ng-bootstrap/ng-bootstrap';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-list-match',
@@ -16,17 +17,22 @@ export class ListMatchComponent implements OnInit {
   match: Array<Match> = [];
   selectedEquipChildren: Child[] = [];
   totalPages: number=0;
-  pageSize:number=3;
+  pageSize:number=10;
   currentPage: number = 1;
   totalMatch: number = 0;
   amina: number;
+  aminaForm: FormGroup ;
   constructor(private matchService: MatchService ,
               private equipService: EquipService,
               private router: Router,
-              private modalService: NgbModal) {
+              private modalService: NgbModal,
+              private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
+    this.aminaForm = this.formBuilder.group({
+      litchi: ['', [ Validators.required]]
+    });
     this.loadMatch();
     this.loadTotalMatch();
   }
@@ -34,16 +40,29 @@ export class ListMatchComponent implements OnInit {
     this.matchService.getAll(this.currentPage, this.pageSize).subscribe(
       (matchs: MatchPaginationModel) => {
         this.match = matchs.content;
-        this.totalPages = Math.ceil(this.match.length / this.pageSize);
+        this.totalPages = Math.ceil(this.totalMatch / this.pageSize);
       },
       (err) => {
         console.log(err);
       }
     );
   }
-  openChildrenModal(content: any) {
-      this.modalService.open(content, { centered: true });
+  get getID(){
+    return this.aminaForm.controls;
   }
+  // Make sure to adjust your openChildrenModal method accordingly:
+  openChildrenModal(content: any, equipId: number) {
+    this.aminaForm.get('litchi').setValue(equipId); // Set the form control value programmatically
+    this.modalService.open(content, { centered: true }).result.then((result) => {
+      // Handle modal close result if needed
+    }, (reason) => {
+      // Handle modal dismiss if needed
+    });
+    console.log(equipId + "-----");
+    // After setting the value, fetch the children for the given equipId
+    this.fetchChildrenForEquip(equipId); // Implement this method to fetch children and update selectedEquipChildren
+  }
+
 
 
   searchMatch(keyword: string): void {
@@ -60,23 +79,24 @@ export class ListMatchComponent implements OnInit {
   }
 
   handleGoToPage(page: number) {
-    this.currentPage=page;
+    this.currentPage = page;
     this.loadMatch();
   }
   private loadTotalMatch(): void {
     this.matchService.getTotalMatch().subscribe(
       (total: number) => {
         this.totalMatch = total;
+        this.totalPages = Math.ceil(this.totalMatch / this.pageSize);
       },
       (err) => {
         console.error(err);
       }
     );
   }
-  test() {
-    console.log(this.amina);
-    this.equipService.getChildrenByEquipId(this.amina).subscribe(children => {
+  fetchChildrenForEquip(equipId: number) {
+    this.equipService.getChildrenByEquipId(equipId).subscribe(children => {
+      console.log(children);
       this.selectedEquipChildren = children;
-  });
+    });
   }
 }
